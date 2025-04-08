@@ -38,9 +38,17 @@
             chkMirrorH = new CheckBox();
             chkMirrorV = new CheckBox();
             gbxAngle = new GroupBox();
+            txtAngle = new TextBox();
+            gbxCutScreen = new GroupBox();
+            txtInitialX = new TextBox();
+            txtFinalX = new TextBox();
+            txtInitialY = new TextBox();
+            txtFinalY = new TextBox();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
+            gbxAngle.SuspendLayout();
+            gbxCutScreen.SuspendLayout();
             SuspendLayout();
             // 
             // txtInput
@@ -126,6 +134,7 @@
             // 
             // gbxAngle
             // 
+            gbxAngle.Controls.Add(txtAngle);
             gbxAngle.Location = new Point(250, 136);
             gbxAngle.Name = "gbxAngle";
             gbxAngle.Size = new Size(200, 100);
@@ -133,11 +142,60 @@
             gbxAngle.TabStop = false;
             gbxAngle.Text = "Angle Alignment";
             // 
+            // txtAngle
+            // 
+            txtAngle.Location = new Point(21, 30);
+            txtAngle.Name = "txtAngle";
+            txtAngle.Size = new Size(100, 23);
+            txtAngle.TabIndex = 0;
+            // 
+            // gbxCutScreen
+            // 
+            gbxCutScreen.Controls.Add(txtInitialY);
+            gbxCutScreen.Controls.Add(txtFinalY);
+            gbxCutScreen.Controls.Add(txtInitialX);
+            gbxCutScreen.Controls.Add(txtFinalX);
+            gbxCutScreen.Location = new Point(12, 251);
+            gbxCutScreen.Name = "gbxCutScreen";
+            gbxCutScreen.Size = new Size(276, 134);
+            gbxCutScreen.TabIndex = 8;
+            gbxCutScreen.TabStop = false;
+            gbxCutScreen.Text = "Cut Screen ( X - Y)";
+            // 
+            // txtInitialX
+            // 
+            txtInitialX.Location = new Point(24, 36);
+            txtInitialX.Name = "txtInitialX";
+            txtInitialX.Size = new Size(100, 23);
+            txtInitialX.TabIndex = 0;
+            // 
+            // txtFinalX
+            // 
+            txtFinalX.Location = new Point(152, 36);
+            txtFinalX.Name = "txtFinalX";
+            txtFinalX.Size = new Size(100, 23);
+            txtFinalX.TabIndex = 1;
+            // 
+            // txtInitialY
+            // 
+            txtInitialY.Location = new Point(24, 86);
+            txtInitialY.Name = "txtInitialY";
+            txtInitialY.Size = new Size(100, 23);
+            txtInitialY.TabIndex = 2;
+            // 
+            // txtFinalY
+            // 
+            txtFinalY.Location = new Point(152, 86);
+            txtFinalY.Name = "txtFinalY";
+            txtFinalY.Size = new Size(100, 23);
+            txtFinalY.TabIndex = 3;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(621, 450);
+            Controls.Add(gbxCutScreen);
             Controls.Add(gbxAngle);
             Controls.Add(gbxMirror);
             Controls.Add(gbxCutTime);
@@ -150,6 +208,10 @@
             gbxCutTime.PerformLayout();
             gbxMirror.ResumeLayout(false);
             gbxMirror.PerformLayout();
+            gbxAngle.ResumeLayout(false);
+            gbxAngle.PerformLayout();
+            gbxCutScreen.ResumeLayout(false);
+            gbxCutScreen.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -165,5 +227,11 @@
         private CheckBox chkMirrorV;
         private CheckBox chkMirrorH;
         private GroupBox gbxAngle;
+        private TextBox txtAngle;
+        private GroupBox gbxCutScreen;
+        private TextBox txtInitialY;
+        private TextBox txtFinalY;
+        private TextBox txtInitialX;
+        private TextBox txtFinalX;
     }
 }
