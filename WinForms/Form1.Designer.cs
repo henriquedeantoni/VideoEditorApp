@@ -28,19 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             txtInput = new TextBox();
             txtOutput = new TextBox();
             txtStart = new TextBox();
             txtEnd = new TextBox();
             gbxPath = new GroupBox();
+            label1 = new Label();
+            lblDestination = new Label();
+            lblSource = new Label();
+            textBox1 = new TextBox();
             gbxCutTime = new GroupBox();
+            lblEndTime = new Label();
+            lblStartTime = new Label();
             gbxMirror = new GroupBox();
-            chkMirrorH = new CheckBox();
             chkMirrorV = new CheckBox();
+            chkMirrorH = new CheckBox();
             gbxAngle = new GroupBox();
+            hScrollBar1 = new HScrollBar();
+            label2 = new Label();
+            txtAngle = new TextBox();
+            gbxCutScreen = new GroupBox();
+            txtInitialY = new TextBox();
+            txtFinalY = new TextBox();
+            txtInitialX = new TextBox();
+            txtFinalX = new TextBox();
+            btnProcess = new Button();
+            groupBox1 = new GroupBox();
+            chkOriginalAudio = new CheckBox();
+            axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
+            gbxAngle.SuspendLayout();
+            gbxCutScreen.SuspendLayout();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).BeginInit();
             SuspendLayout();
             // 
             // txtInput
@@ -73,46 +96,94 @@
             // 
             // gbxPath
             // 
+            gbxPath.Controls.Add(label1);
+            gbxPath.Controls.Add(lblDestination);
+            gbxPath.Controls.Add(lblSource);
+            gbxPath.Controls.Add(textBox1);
             gbxPath.Controls.Add(txtInput);
             gbxPath.Controls.Add(txtOutput);
             gbxPath.Location = new Point(12, 12);
             gbxPath.Name = "gbxPath";
-            gbxPath.Size = new Size(276, 100);
+            gbxPath.Size = new Size(276, 119);
             gbxPath.TabIndex = 4;
             gbxPath.TabStop = false;
             gbxPath.Text = "Path";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(154, 62);
+            label1.Name = "label1";
+            label1.Size = new Size(36, 15);
+            label1.TabIndex = 12;
+            label1.Text = "Sufix:";
+            // 
+            // lblDestination
+            // 
+            lblDestination.AutoSize = true;
+            lblDestination.Location = new Point(154, 19);
+            lblDestination.Name = "lblDestination";
+            lblDestination.Size = new Size(70, 15);
+            lblDestination.TabIndex = 11;
+            lblDestination.Text = "Destination:";
+            // 
+            // lblSource
+            // 
+            lblSource.AutoSize = true;
+            lblSource.Location = new Point(24, 18);
+            lblSource.Name = "lblSource";
+            lblSource.Size = new Size(46, 15);
+            lblSource.TabIndex = 10;
+            lblSource.Text = "Source:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(152, 80);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(100, 23);
+            textBox1.TabIndex = 2;
+            // 
             // gbxCutTime
             // 
+            gbxCutTime.Controls.Add(lblEndTime);
+            gbxCutTime.Controls.Add(lblStartTime);
             gbxCutTime.Controls.Add(txtStart);
             gbxCutTime.Controls.Add(txtEnd);
             gbxCutTime.Location = new Point(307, 12);
             gbxCutTime.Name = "gbxCutTime";
-            gbxCutTime.Size = new Size(271, 100);
+            gbxCutTime.Size = new Size(271, 119);
             gbxCutTime.TabIndex = 5;
             gbxCutTime.TabStop = false;
             gbxCutTime.Text = "Cut Time";
+            // 
+            // lblEndTime
+            // 
+            lblEndTime.AutoSize = true;
+            lblEndTime.Location = new Point(137, 18);
+            lblEndTime.Name = "lblEndTime";
+            lblEndTime.Size = new Size(59, 15);
+            lblEndTime.TabIndex = 13;
+            lblEndTime.Text = "End Time:";
+            // 
+            // lblStartTime
+            // 
+            lblStartTime.AutoSize = true;
+            lblStartTime.Location = new Point(15, 18);
+            lblStartTime.Name = "lblStartTime";
+            lblStartTime.Size = new Size(63, 15);
+            lblStartTime.TabIndex = 12;
+            lblStartTime.Text = "Start Time:";
             // 
             // gbxMirror
             // 
             gbxMirror.Controls.Add(chkMirrorV);
             gbxMirror.Controls.Add(chkMirrorH);
-            gbxMirror.Location = new Point(13, 136);
+            gbxMirror.Location = new Point(12, 145);
             gbxMirror.Name = "gbxMirror";
             gbxMirror.Size = new Size(200, 100);
             gbxMirror.TabIndex = 6;
             gbxMirror.TabStop = false;
             gbxMirror.Text = "Mirror";
-            // 
-            // chkMirrorH
-            // 
-            chkMirrorH.AutoSize = true;
-            chkMirrorH.Location = new Point(23, 33);
-            chkMirrorH.Name = "chkMirrorH";
-            chkMirrorH.Size = new Size(117, 19);
-            chkMirrorH.TabIndex = 7;
-            chkMirrorH.Text = "Horizontal Mirror";
-            chkMirrorH.UseVisualStyleBackColor = true;
             // 
             // chkMirrorV
             // 
@@ -124,32 +195,159 @@
             chkMirrorV.Text = "Vertical Mirror";
             chkMirrorV.UseVisualStyleBackColor = true;
             // 
+            // chkMirrorH
+            // 
+            chkMirrorH.AutoSize = true;
+            chkMirrorH.Location = new Point(23, 33);
+            chkMirrorH.Name = "chkMirrorH";
+            chkMirrorH.Size = new Size(117, 19);
+            chkMirrorH.TabIndex = 7;
+            chkMirrorH.Text = "Horizontal Mirror";
+            chkMirrorH.UseVisualStyleBackColor = true;
+            // 
             // gbxAngle
             // 
-            gbxAngle.Location = new Point(250, 136);
+            gbxAngle.Controls.Add(hScrollBar1);
+            gbxAngle.Controls.Add(label2);
+            gbxAngle.Controls.Add(txtAngle);
+            gbxAngle.Location = new Point(252, 145);
             gbxAngle.Name = "gbxAngle";
-            gbxAngle.Size = new Size(200, 100);
+            gbxAngle.Size = new Size(170, 100);
             gbxAngle.TabIndex = 7;
             gbxAngle.TabStop = false;
             gbxAngle.Text = "Angle Alignment";
+            // 
+            // hScrollBar1
+            // 
+            hScrollBar1.Location = new Point(22, 74);
+            hScrollBar1.Name = "hScrollBar1";
+            hScrollBar1.Size = new Size(80, 17);
+            hScrollBar1.TabIndex = 10;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(22, 19);
+            label2.Name = "label2";
+            label2.Size = new Size(63, 15);
+            label2.TabIndex = 13;
+            label2.Text = "Start Time:";
+            // 
+            // txtAngle
+            // 
+            txtAngle.Location = new Point(22, 37);
+            txtAngle.Name = "txtAngle";
+            txtAngle.Size = new Size(100, 23);
+            txtAngle.TabIndex = 0;
+            // 
+            // gbxCutScreen
+            // 
+            gbxCutScreen.Controls.Add(txtInitialY);
+            gbxCutScreen.Controls.Add(txtFinalY);
+            gbxCutScreen.Controls.Add(txtInitialX);
+            gbxCutScreen.Controls.Add(txtFinalX);
+            gbxCutScreen.Location = new Point(12, 266);
+            gbxCutScreen.Name = "gbxCutScreen";
+            gbxCutScreen.Size = new Size(224, 146);
+            gbxCutScreen.TabIndex = 8;
+            gbxCutScreen.TabStop = false;
+            gbxCutScreen.Text = "Cut Screen ( X - Y)";
+            // 
+            // txtInitialY
+            // 
+            txtInitialY.Location = new Point(16, 81);
+            txtInitialY.Name = "txtInitialY";
+            txtInitialY.Size = new Size(81, 23);
+            txtInitialY.TabIndex = 2;
+            // 
+            // txtFinalY
+            // 
+            txtFinalY.Location = new Point(116, 81);
+            txtFinalY.Name = "txtFinalY";
+            txtFinalY.Size = new Size(84, 23);
+            txtFinalY.TabIndex = 3;
+            // 
+            // txtInitialX
+            // 
+            txtInitialX.Location = new Point(16, 31);
+            txtInitialX.Name = "txtInitialX";
+            txtInitialX.Size = new Size(81, 23);
+            txtInitialX.TabIndex = 0;
+            // 
+            // txtFinalX
+            // 
+            txtFinalX.Location = new Point(116, 31);
+            txtFinalX.Name = "txtFinalX";
+            txtFinalX.Size = new Size(84, 23);
+            txtFinalX.TabIndex = 1;
+            // 
+            // btnProcess
+            // 
+            btnProcess.Location = new Point(444, 415);
+            btnProcess.Name = "btnProcess";
+            btnProcess.Size = new Size(128, 23);
+            btnProcess.TabIndex = 9;
+            btnProcess.Text = "Process Changes";
+            btnProcess.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(chkOriginalAudio);
+            groupBox1.Location = new Point(258, 266);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(164, 146);
+            groupBox1.TabIndex = 10;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Audio Config";
+            // 
+            // chkOriginalAudio
+            // 
+            chkOriginalAudio.AutoSize = true;
+            chkOriginalAudio.Location = new Point(16, 33);
+            chkOriginalAudio.Name = "chkOriginalAudio";
+            chkOriginalAudio.Size = new Size(132, 19);
+            chkOriginalAudio.TabIndex = 9;
+            chkOriginalAudio.Text = "Keep Original Audio";
+            chkOriginalAudio.UseVisualStyleBackColor = true;
+            chkOriginalAudio.CheckedChanged += checkBox2_CheckedChanged;
+            // 
+            // axWindowsMediaPlayer1
+            // 
+            axWindowsMediaPlayer1.Enabled = true;
+            axWindowsMediaPlayer1.Location = new Point(509, 162);
+            axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
+            axWindowsMediaPlayer1.OcxState = (AxHost.State)resources.GetObject("axWindowsMediaPlayer1.OcxState");
+            axWindowsMediaPlayer1.Size = new Size(210, 208);
+            axWindowsMediaPlayer1.TabIndex = 11;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(621, 450);
+            ClientSize = new Size(749, 450);
+            Controls.Add(axWindowsMediaPlayer1);
+            Controls.Add(groupBox1);
+            Controls.Add(btnProcess);
+            Controls.Add(gbxCutScreen);
             Controls.Add(gbxAngle);
             Controls.Add(gbxMirror);
             Controls.Add(gbxCutTime);
             Controls.Add(gbxPath);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Main Editor";
             gbxPath.ResumeLayout(false);
             gbxPath.PerformLayout();
             gbxCutTime.ResumeLayout(false);
             gbxCutTime.PerformLayout();
             gbxMirror.ResumeLayout(false);
             gbxMirror.PerformLayout();
+            gbxAngle.ResumeLayout(false);
+            gbxAngle.PerformLayout();
+            gbxCutScreen.ResumeLayout(false);
+            gbxCutScreen.PerformLayout();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).EndInit();
             ResumeLayout(false);
         }
 
@@ -165,5 +363,23 @@
         private CheckBox chkMirrorV;
         private CheckBox chkMirrorH;
         private GroupBox gbxAngle;
+        private TextBox txtAngle;
+        private GroupBox gbxCutScreen;
+        private TextBox txtInitialY;
+        private TextBox txtFinalY;
+        private TextBox txtInitialX;
+        private TextBox txtFinalX;
+        private TextBox textBox1;
+        private Button btnProcess;
+        private Label label1;
+        private Label lblDestination;
+        private Label lblSource;
+        private Label lblStartTime;
+        private Label lblEndTime;
+        private HScrollBar hScrollBar1;
+        private Label label2;
+        private GroupBox groupBox1;
+        private CheckBox chkOriginalAudio;
+        private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
     }
 }
