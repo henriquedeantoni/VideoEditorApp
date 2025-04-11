@@ -34,6 +34,8 @@
             txtStart = new TextBox();
             txtEnd = new TextBox();
             gbxPath = new GroupBox();
+            btnPathDestination = new Button();
+            btnPathSource = new Button();
             label1 = new Label();
             lblDestination = new Label();
             lblSource = new Label();
@@ -46,7 +48,7 @@
             chkMirrorH = new CheckBox();
             gbxAngle = new GroupBox();
             hScrollBar1 = new HScrollBar();
-            label2 = new Label();
+            lblAngle = new Label();
             txtAngle = new TextBox();
             gbxCutScreen = new GroupBox();
             txtInitialY = new TextBox();
@@ -57,8 +59,13 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            btnPathSource = new Button();
-            btnPathDestination = new Button();
+            label3 = new Label();
+            lblHorizontalX = new Label();
+            lblStartX = new Label();
+            lblEndX = new Label();
+            lblStartY = new Label();
+            lblEndY = new Label();
+            label2 = new Label();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -112,6 +119,24 @@
             gbxPath.TabIndex = 4;
             gbxPath.TabStop = false;
             gbxPath.Text = "Path";
+            // 
+            // btnPathDestination
+            // 
+            btnPathDestination.Location = new Point(281, 36);
+            btnPathDestination.Name = "btnPathDestination";
+            btnPathDestination.Size = new Size(44, 23);
+            btnPathDestination.TabIndex = 14;
+            btnPathDestination.Text = "button2";
+            btnPathDestination.UseVisualStyleBackColor = true;
+            // 
+            // btnPathSource
+            // 
+            btnPathSource.Location = new Point(116, 36);
+            btnPathSource.Name = "btnPathSource";
+            btnPathSource.Size = new Size(50, 23);
+            btnPathSource.TabIndex = 13;
+            btnPathSource.Text = "button1";
+            btnPathSource.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -213,7 +238,7 @@
             // gbxAngle
             // 
             gbxAngle.Controls.Add(hScrollBar1);
-            gbxAngle.Controls.Add(label2);
+            gbxAngle.Controls.Add(lblAngle);
             gbxAngle.Controls.Add(txtAngle);
             gbxAngle.Location = new Point(252, 145);
             gbxAngle.Name = "gbxAngle";
@@ -229,14 +254,14 @@
             hScrollBar1.Size = new Size(124, 25);
             hScrollBar1.TabIndex = 10;
             // 
-            // label2
+            // lblAngle
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(22, 19);
-            label2.Name = "label2";
-            label2.Size = new Size(63, 15);
-            label2.TabIndex = 13;
-            label2.Text = "Start Time:";
+            lblAngle.AutoSize = true;
+            lblAngle.Location = new Point(22, 19);
+            lblAngle.Name = "lblAngle";
+            lblAngle.Size = new Size(86, 15);
+            lblAngle.TabIndex = 13;
+            lblAngle.Text = "Angle Rotation";
             // 
             // txtAngle
             // 
@@ -247,41 +272,47 @@
             // 
             // gbxCutScreen
             // 
+            gbxCutScreen.Controls.Add(label2);
+            gbxCutScreen.Controls.Add(lblEndY);
+            gbxCutScreen.Controls.Add(lblStartY);
+            gbxCutScreen.Controls.Add(lblEndX);
+            gbxCutScreen.Controls.Add(lblStartX);
+            gbxCutScreen.Controls.Add(lblHorizontalX);
             gbxCutScreen.Controls.Add(txtInitialY);
             gbxCutScreen.Controls.Add(txtFinalY);
             gbxCutScreen.Controls.Add(txtInitialX);
             gbxCutScreen.Controls.Add(txtFinalX);
             gbxCutScreen.Location = new Point(12, 266);
             gbxCutScreen.Name = "gbxCutScreen";
-            gbxCutScreen.Size = new Size(224, 146);
+            gbxCutScreen.Size = new Size(224, 172);
             gbxCutScreen.TabIndex = 8;
             gbxCutScreen.TabStop = false;
             gbxCutScreen.Text = "Cut Screen ( X - Y)";
             // 
             // txtInitialY
             // 
-            txtInitialY.Location = new Point(16, 81);
+            txtInitialY.Location = new Point(17, 113);
             txtInitialY.Name = "txtInitialY";
             txtInitialY.Size = new Size(81, 23);
             txtInitialY.TabIndex = 2;
             // 
             // txtFinalY
             // 
-            txtFinalY.Location = new Point(116, 81);
+            txtFinalY.Location = new Point(117, 113);
             txtFinalY.Name = "txtFinalY";
             txtFinalY.Size = new Size(84, 23);
             txtFinalY.TabIndex = 3;
             // 
             // txtInitialX
             // 
-            txtInitialX.Location = new Point(16, 31);
+            txtInitialX.Location = new Point(17, 54);
             txtInitialX.Name = "txtInitialX";
             txtInitialX.Size = new Size(81, 23);
             txtInitialX.TabIndex = 0;
             // 
             // txtFinalX
             // 
-            txtFinalX.Location = new Point(116, 31);
+            txtFinalX.Location = new Point(117, 54);
             txtFinalX.Name = "txtFinalX";
             txtFinalX.Size = new Size(84, 23);
             txtFinalX.TabIndex = 1;
@@ -325,29 +356,75 @@
             axWindowsMediaPlayer1.Size = new Size(210, 208);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
-            // btnPathSource
+            // label3
             // 
-            btnPathSource.Location = new Point(116, 36);
-            btnPathSource.Name = "btnPathSource";
-            btnPathSource.Size = new Size(50, 23);
-            btnPathSource.TabIndex = 13;
-            btnPathSource.Text = "button1";
-            btnPathSource.UseVisualStyleBackColor = true;
+            label3.AutoSize = true;
+            label3.Location = new Point(351, 218);
+            label3.Name = "label3";
+            label3.Size = new Size(46, 15);
+            label3.TabIndex = 12;
+            label3.Text = "Source:";
             // 
-            // btnPathDestination
+            // lblHorizontalX
             // 
-            btnPathDestination.Location = new Point(281, 36);
-            btnPathDestination.Name = "btnPathDestination";
-            btnPathDestination.Size = new Size(44, 23);
-            btnPathDestination.TabIndex = 14;
-            btnPathDestination.Text = "button2";
-            btnPathDestination.UseVisualStyleBackColor = true;
+            lblHorizontalX.AutoSize = true;
+            lblHorizontalX.Location = new Point(17, 19);
+            lblHorizontalX.Name = "lblHorizontalX";
+            lblHorizontalX.Size = new Size(72, 15);
+            lblHorizontalX.TabIndex = 13;
+            lblHorizontalX.Text = "Horizontal X";
+            // 
+            // lblStartX
+            // 
+            lblStartX.AutoSize = true;
+            lblStartX.Location = new Point(17, 37);
+            lblStartX.Name = "lblStartX";
+            lblStartX.Size = new Size(41, 15);
+            lblStartX.TabIndex = 13;
+            lblStartX.Text = "Start X";
+            // 
+            // lblEndX
+            // 
+            lblEndX.AutoSize = true;
+            lblEndX.Location = new Point(117, 37);
+            lblEndX.Name = "lblEndX";
+            lblEndX.Size = new Size(37, 15);
+            lblEndX.TabIndex = 14;
+            lblEndX.Text = "End X";
+            // 
+            // lblStartY
+            // 
+            lblStartY.AutoSize = true;
+            lblStartY.Location = new Point(17, 95);
+            lblStartY.Name = "lblStartY";
+            lblStartY.Size = new Size(37, 15);
+            lblStartY.TabIndex = 15;
+            lblStartY.Text = "End Y";
+            // 
+            // lblEndY
+            // 
+            lblEndY.AutoSize = true;
+            lblEndY.Location = new Point(117, 95);
+            lblEndY.Name = "lblEndY";
+            lblEndY.Size = new Size(37, 15);
+            lblEndY.TabIndex = 16;
+            lblEndY.Text = "End Y";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Vertical Y";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(749, 450);
+            Controls.Add(label3);
             Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(groupBox1);
             Controls.Add(btnProcess);
@@ -358,6 +435,7 @@
             Controls.Add(gbxPath);
             Name = "Form1";
             Text = "Main Editor";
+            Load += Form1_Load;
             gbxPath.ResumeLayout(false);
             gbxPath.PerformLayout();
             gbxCutTime.ResumeLayout(false);
@@ -372,6 +450,7 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -400,11 +479,18 @@
         private Label lblStartTime;
         private Label lblEndTime;
         private HScrollBar hScrollBar1;
-        private Label label2;
+        private Label lblAngle;
         private GroupBox groupBox1;
         private CheckBox chkOriginalAudio;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private Button btnPathDestination;
         private Button btnPathSource;
+        private Label label3;
+        private Label lblHorizontalX;
+        private Label lblStartX;
+        private Label lblEndY;
+        private Label lblStartY;
+        private Label lblEndX;
+        private Label label2;
     }
 }
