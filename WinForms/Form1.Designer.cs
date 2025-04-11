@@ -57,6 +57,8 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            btnPathSource = new Button();
+            btnPathDestination = new Button();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -68,14 +70,14 @@
             // 
             // txtInput
             // 
-            txtInput.Location = new Point(24, 36);
+            txtInput.Location = new Point(6, 36);
             txtInput.Name = "txtInput";
             txtInput.Size = new Size(100, 23);
             txtInput.TabIndex = 0;
             // 
             // txtOutput
             // 
-            txtOutput.Location = new Point(152, 36);
+            txtOutput.Location = new Point(172, 36);
             txtOutput.Name = "txtOutput";
             txtOutput.Size = new Size(100, 23);
             txtOutput.TabIndex = 1;
@@ -96,6 +98,8 @@
             // 
             // gbxPath
             // 
+            gbxPath.Controls.Add(btnPathDestination);
+            gbxPath.Controls.Add(btnPathSource);
             gbxPath.Controls.Add(label1);
             gbxPath.Controls.Add(lblDestination);
             gbxPath.Controls.Add(lblSource);
@@ -104,7 +108,7 @@
             gbxPath.Controls.Add(txtOutput);
             gbxPath.Location = new Point(12, 12);
             gbxPath.Name = "gbxPath";
-            gbxPath.Size = new Size(276, 119);
+            gbxPath.Size = new Size(362, 119);
             gbxPath.TabIndex = 4;
             gbxPath.TabStop = false;
             gbxPath.Text = "Path";
@@ -112,7 +116,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(154, 62);
+            label1.Location = new Point(172, 62);
             label1.Name = "label1";
             label1.Size = new Size(36, 15);
             label1.TabIndex = 12;
@@ -121,7 +125,7 @@
             // lblDestination
             // 
             lblDestination.AutoSize = true;
-            lblDestination.Location = new Point(154, 19);
+            lblDestination.Location = new Point(172, 19);
             lblDestination.Name = "lblDestination";
             lblDestination.Size = new Size(70, 15);
             lblDestination.TabIndex = 11;
@@ -130,15 +134,16 @@
             // lblSource
             // 
             lblSource.AutoSize = true;
-            lblSource.Location = new Point(24, 18);
+            lblSource.Location = new Point(6, 19);
             lblSource.Name = "lblSource";
             lblSource.Size = new Size(46, 15);
             lblSource.TabIndex = 10;
             lblSource.Text = "Source:";
+            lblSource.Click += lblSource_Click;
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(152, 80);
+            textBox1.Location = new Point(172, 80);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 2;
@@ -149,7 +154,7 @@
             gbxCutTime.Controls.Add(lblStartTime);
             gbxCutTime.Controls.Add(txtStart);
             gbxCutTime.Controls.Add(txtEnd);
-            gbxCutTime.Location = new Point(307, 12);
+            gbxCutTime.Location = new Point(389, 12);
             gbxCutTime.Name = "gbxCutTime";
             gbxCutTime.Size = new Size(271, 119);
             gbxCutTime.TabIndex = 5;
@@ -219,9 +224,9 @@
             // 
             // hScrollBar1
             // 
-            hScrollBar1.Location = new Point(22, 74);
+            hScrollBar1.Location = new Point(22, 66);
             hScrollBar1.Name = "hScrollBar1";
-            hScrollBar1.Size = new Size(80, 17);
+            hScrollBar1.Size = new Size(124, 25);
             hScrollBar1.TabIndex = 10;
             // 
             // label2
@@ -237,7 +242,7 @@
             // 
             txtAngle.Location = new Point(22, 37);
             txtAngle.Name = "txtAngle";
-            txtAngle.Size = new Size(100, 23);
+            txtAngle.Size = new Size(124, 23);
             txtAngle.TabIndex = 0;
             // 
             // gbxCutScreen
@@ -320,6 +325,24 @@
             axWindowsMediaPlayer1.Size = new Size(210, 208);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
+            // btnPathSource
+            // 
+            btnPathSource.Location = new Point(116, 36);
+            btnPathSource.Name = "btnPathSource";
+            btnPathSource.Size = new Size(50, 23);
+            btnPathSource.TabIndex = 13;
+            btnPathSource.Text = "button1";
+            btnPathSource.UseVisualStyleBackColor = true;
+            // 
+            // btnPathDestination
+            // 
+            btnPathDestination.Location = new Point(281, 36);
+            btnPathDestination.Name = "btnPathDestination";
+            btnPathDestination.Size = new Size(44, 23);
+            btnPathDestination.TabIndex = 14;
+            btnPathDestination.Text = "button2";
+            btnPathDestination.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -381,5 +404,7 @@
         private GroupBox groupBox1;
         private CheckBox chkOriginalAudio;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private Button btnPathDestination;
+        private Button btnPathSource;
     }
 }

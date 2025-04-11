@@ -12,5 +12,10 @@ namespace WinForms
         {
 
         }
+
+        private void lblSource_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
