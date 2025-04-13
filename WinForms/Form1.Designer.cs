@@ -319,7 +319,7 @@
             // 
             // btnProcess
             // 
-            btnProcess.Location = new Point(444, 415);
+            btnProcess.Location = new Point(591, 415);
             btnProcess.Name = "btnProcess";
             btnProcess.Size = new Size(128, 23);
             btnProcess.TabIndex = 9;
