@@ -51,6 +51,12 @@
             lblAngle = new Label();
             txtAngle = new TextBox();
             gbxCutScreen = new GroupBox();
+            label2 = new Label();
+            lblEndY = new Label();
+            lblStartY = new Label();
+            lblEndX = new Label();
+            lblStartX = new Label();
+            lblHorizontalX = new Label();
             txtInitialY = new TextBox();
             txtFinalY = new TextBox();
             txtInitialX = new TextBox();
@@ -60,12 +66,6 @@
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             label3 = new Label();
-            lblHorizontalX = new Label();
-            lblStartX = new Label();
-            lblEndX = new Label();
-            lblStartY = new Label();
-            lblEndY = new Label();
-            label2 = new Label();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -137,6 +137,7 @@
             btnPathSource.TabIndex = 13;
             btnPathSource.Text = "button1";
             btnPathSource.UseVisualStyleBackColor = true;
+            btnPathSource.Click += btnPathSource_Click;
             // 
             // label1
             // 
@@ -289,6 +290,60 @@
             gbxCutScreen.TabStop = false;
             gbxCutScreen.Text = "Cut Screen ( X - Y)";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Vertical Y";
+            // 
+            // lblEndY
+            // 
+            lblEndY.AutoSize = true;
+            lblEndY.Location = new Point(117, 95);
+            lblEndY.Name = "lblEndY";
+            lblEndY.Size = new Size(37, 15);
+            lblEndY.TabIndex = 16;
+            lblEndY.Text = "End Y";
+            // 
+            // lblStartY
+            // 
+            lblStartY.AutoSize = true;
+            lblStartY.Location = new Point(17, 95);
+            lblStartY.Name = "lblStartY";
+            lblStartY.Size = new Size(37, 15);
+            lblStartY.TabIndex = 15;
+            lblStartY.Text = "End Y";
+            // 
+            // lblEndX
+            // 
+            lblEndX.AutoSize = true;
+            lblEndX.Location = new Point(117, 37);
+            lblEndX.Name = "lblEndX";
+            lblEndX.Size = new Size(37, 15);
+            lblEndX.TabIndex = 14;
+            lblEndX.Text = "End X";
+            // 
+            // lblStartX
+            // 
+            lblStartX.AutoSize = true;
+            lblStartX.Location = new Point(17, 37);
+            lblStartX.Name = "lblStartX";
+            lblStartX.Size = new Size(41, 15);
+            lblStartX.TabIndex = 13;
+            lblStartX.Text = "Start X";
+            // 
+            // lblHorizontalX
+            // 
+            lblHorizontalX.AutoSize = true;
+            lblHorizontalX.Location = new Point(17, 19);
+            lblHorizontalX.Name = "lblHorizontalX";
+            lblHorizontalX.Size = new Size(72, 15);
+            lblHorizontalX.TabIndex = 13;
+            lblHorizontalX.Text = "Horizontal X";
+            // 
             // txtInitialY
             // 
             txtInitialY.Location = new Point(17, 113);
@@ -364,60 +419,6 @@
             label3.Size = new Size(46, 15);
             label3.TabIndex = 12;
             label3.Text = "Source:";
-            // 
-            // lblHorizontalX
-            // 
-            lblHorizontalX.AutoSize = true;
-            lblHorizontalX.Location = new Point(17, 19);
-            lblHorizontalX.Name = "lblHorizontalX";
-            lblHorizontalX.Size = new Size(72, 15);
-            lblHorizontalX.TabIndex = 13;
-            lblHorizontalX.Text = "Horizontal X";
-            // 
-            // lblStartX
-            // 
-            lblStartX.AutoSize = true;
-            lblStartX.Location = new Point(17, 37);
-            lblStartX.Name = "lblStartX";
-            lblStartX.Size = new Size(41, 15);
-            lblStartX.TabIndex = 13;
-            lblStartX.Text = "Start X";
-            // 
-            // lblEndX
-            // 
-            lblEndX.AutoSize = true;
-            lblEndX.Location = new Point(117, 37);
-            lblEndX.Name = "lblEndX";
-            lblEndX.Size = new Size(37, 15);
-            lblEndX.TabIndex = 14;
-            lblEndX.Text = "End X";
-            // 
-            // lblStartY
-            // 
-            lblStartY.AutoSize = true;
-            lblStartY.Location = new Point(17, 95);
-            lblStartY.Name = "lblStartY";
-            lblStartY.Size = new Size(37, 15);
-            lblStartY.TabIndex = 15;
-            lblStartY.Text = "End Y";
-            // 
-            // lblEndY
-            // 
-            lblEndY.AutoSize = true;
-            lblEndY.Location = new Point(117, 95);
-            lblEndY.Name = "lblEndY";
-            lblEndY.Size = new Size(37, 15);
-            lblEndY.TabIndex = 16;
-            lblEndY.Text = "End Y";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 80);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 15);
-            label2.TabIndex = 14;
-            label2.Text = "Vertical Y";
             // 
             // Form1
             // 
