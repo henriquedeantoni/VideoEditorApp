@@ -20,6 +20,14 @@ public partial class Form1 : Form
         btnPathDestination.Text = "";
         btnPathDestination.Size = new Size(32, 32);
         btnPathDestination.FlatStyle = FlatStyle.Flat;
+
+        txtAngle.Text = hScrollBarAngle.Value.ToString();
+
+        // Evento de mudança da ScrollBar
+        hScrollBarAngle.Scroll += hScrollBarAngle_Scroll;
+
+        // Evento de mudança no TextBox
+        txtAngle.TextChanged += txtAngle_TextChanged;
     }
 
     private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -37,9 +45,10 @@ public partial class Form1 : Form
 
     }
 
+    #region
     private void btnPathSource_Click(object sender, EventArgs e)
     {
-        using(OpenFileDialog openFileDialog = new OpenFileDialog())
+        using (OpenFileDialog openFileDialog = new OpenFileDialog())
         {
             openFileDialog.InitialDirectory = DocumentsPath;
             openFileDialog.Filter = "Video Files|*.mp4;*.avi;*.mov;*.wmv;*.mkv;*.flv;*.mpeg;*.mpg|All Files|*.*";
@@ -51,4 +60,34 @@ public partial class Form1 : Form
             }
         }
     }
+
+    private void btnPathDestination_Click(object sender, EventArgs e)
+    {
+        using (OpenFileDialog openFileDialog = new OpenFileDialog())
+        {
+            openFileDialog.InitialDirectory = DocumentsPath;
+            openFileDialog.Filter = "Video Files|*.mp4;*.avi;*.mov;*.wmv;*.mkv;*.flv;*.mpeg;*.mpg|All Files|*.*";
+            openFileDialog.Title = "Select a video file";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                txtInput.Text = openFileDialog.FileName + txtSufix.Text;
+            }
+        }
+    }
+
+    private void txtAngle_TextChanged(object sender, EventArgs e)
+    {
+
+    }
+
+    private void hScrollBarAngle_Scroll(object sender, ScrollEventArgs e)
+    {
+
+    }
+
+    #endregion
+
+
+    
 }
