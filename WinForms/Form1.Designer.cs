@@ -39,7 +39,7 @@
             label1 = new Label();
             lblDestination = new Label();
             lblSource = new Label();
-            textBox1 = new TextBox();
+            txtSufix = new TextBox();
             gbxCutTime = new GroupBox();
             lblEndTime = new Label();
             lblStartTime = new Label();
@@ -47,10 +47,16 @@
             chkMirrorV = new CheckBox();
             chkMirrorH = new CheckBox();
             gbxAngle = new GroupBox();
-            hScrollBar1 = new HScrollBar();
+            hScrollBarAngle = new HScrollBar();
             lblAngle = new Label();
             txtAngle = new TextBox();
             gbxCutScreen = new GroupBox();
+            label2 = new Label();
+            lblEndY = new Label();
+            lblStartY = new Label();
+            lblEndX = new Label();
+            lblStartX = new Label();
+            lblHorizontalX = new Label();
             txtInitialY = new TextBox();
             txtFinalY = new TextBox();
             txtInitialX = new TextBox();
@@ -59,13 +65,6 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            label3 = new Label();
-            lblHorizontalX = new Label();
-            lblStartX = new Label();
-            lblEndX = new Label();
-            lblStartY = new Label();
-            lblEndY = new Label();
-            label2 = new Label();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -110,7 +109,7 @@
             gbxPath.Controls.Add(label1);
             gbxPath.Controls.Add(lblDestination);
             gbxPath.Controls.Add(lblSource);
-            gbxPath.Controls.Add(textBox1);
+            gbxPath.Controls.Add(txtSufix);
             gbxPath.Controls.Add(txtInput);
             gbxPath.Controls.Add(txtOutput);
             gbxPath.Location = new Point(12, 12);
@@ -128,6 +127,7 @@
             btnPathDestination.TabIndex = 14;
             btnPathDestination.Text = "button2";
             btnPathDestination.UseVisualStyleBackColor = true;
+            btnPathDestination.Click += btnPathDestination_Click;
             // 
             // btnPathSource
             // 
@@ -137,6 +137,7 @@
             btnPathSource.TabIndex = 13;
             btnPathSource.Text = "button1";
             btnPathSource.UseVisualStyleBackColor = true;
+            btnPathSource.Click += btnPathSource_Click;
             // 
             // label1
             // 
@@ -166,12 +167,12 @@
             lblSource.Text = "Source:";
             lblSource.Click += lblSource_Click;
             // 
-            // textBox1
+            // txtSufix
             // 
-            textBox1.Location = new Point(172, 80);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 2;
+            txtSufix.Location = new Point(172, 80);
+            txtSufix.Name = "txtSufix";
+            txtSufix.Size = new Size(100, 23);
+            txtSufix.TabIndex = 2;
             // 
             // gbxCutTime
             // 
@@ -237,7 +238,7 @@
             // 
             // gbxAngle
             // 
-            gbxAngle.Controls.Add(hScrollBar1);
+            gbxAngle.Controls.Add(hScrollBarAngle);
             gbxAngle.Controls.Add(lblAngle);
             gbxAngle.Controls.Add(txtAngle);
             gbxAngle.Location = new Point(252, 145);
@@ -247,12 +248,15 @@
             gbxAngle.TabStop = false;
             gbxAngle.Text = "Angle Alignment";
             // 
-            // hScrollBar1
+            // hScrollBarAngle
             // 
-            hScrollBar1.Location = new Point(22, 66);
-            hScrollBar1.Name = "hScrollBar1";
-            hScrollBar1.Size = new Size(124, 25);
-            hScrollBar1.TabIndex = 10;
+            hScrollBarAngle.Location = new Point(22, 66);
+            hScrollBarAngle.Maximum = 90;
+            hScrollBarAngle.Minimum = -90;
+            hScrollBarAngle.Name = "hScrollBarAngle";
+            hScrollBarAngle.Size = new Size(124, 25);
+            hScrollBarAngle.TabIndex = 10;
+            hScrollBarAngle.Scroll += hScrollBarAngle_Scroll;
             // 
             // lblAngle
             // 
@@ -269,6 +273,7 @@
             txtAngle.Name = "txtAngle";
             txtAngle.Size = new Size(124, 23);
             txtAngle.TabIndex = 0;
+            txtAngle.TextChanged += txtAngle_TextChanged;
             // 
             // gbxCutScreen
             // 
@@ -288,6 +293,60 @@
             gbxCutScreen.TabIndex = 8;
             gbxCutScreen.TabStop = false;
             gbxCutScreen.Text = "Cut Screen ( X - Y)";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(17, 80);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Vertical Y";
+            // 
+            // lblEndY
+            // 
+            lblEndY.AutoSize = true;
+            lblEndY.Location = new Point(117, 95);
+            lblEndY.Name = "lblEndY";
+            lblEndY.Size = new Size(37, 15);
+            lblEndY.TabIndex = 16;
+            lblEndY.Text = "End Y";
+            // 
+            // lblStartY
+            // 
+            lblStartY.AutoSize = true;
+            lblStartY.Location = new Point(17, 95);
+            lblStartY.Name = "lblStartY";
+            lblStartY.Size = new Size(37, 15);
+            lblStartY.TabIndex = 15;
+            lblStartY.Text = "End Y";
+            // 
+            // lblEndX
+            // 
+            lblEndX.AutoSize = true;
+            lblEndX.Location = new Point(117, 37);
+            lblEndX.Name = "lblEndX";
+            lblEndX.Size = new Size(37, 15);
+            lblEndX.TabIndex = 14;
+            lblEndX.Text = "End X";
+            // 
+            // lblStartX
+            // 
+            lblStartX.AutoSize = true;
+            lblStartX.Location = new Point(17, 37);
+            lblStartX.Name = "lblStartX";
+            lblStartX.Size = new Size(41, 15);
+            lblStartX.TabIndex = 13;
+            lblStartX.Text = "Start X";
+            // 
+            // lblHorizontalX
+            // 
+            lblHorizontalX.AutoSize = true;
+            lblHorizontalX.Location = new Point(17, 19);
+            lblHorizontalX.Name = "lblHorizontalX";
+            lblHorizontalX.Size = new Size(72, 15);
+            lblHorizontalX.TabIndex = 13;
+            lblHorizontalX.Text = "Horizontal X";
             // 
             // txtInitialY
             // 
@@ -319,7 +378,7 @@
             // 
             // btnProcess
             // 
-            btnProcess.Location = new Point(444, 415);
+            btnProcess.Location = new Point(591, 415);
             btnProcess.Name = "btnProcess";
             btnProcess.Size = new Size(128, 23);
             btnProcess.TabIndex = 9;
@@ -339,6 +398,8 @@
             // chkOriginalAudio
             // 
             chkOriginalAudio.AutoSize = true;
+            chkOriginalAudio.Checked = true;
+            chkOriginalAudio.CheckState = CheckState.Checked;
             chkOriginalAudio.Location = new Point(16, 33);
             chkOriginalAudio.Name = "chkOriginalAudio";
             chkOriginalAudio.Size = new Size(132, 19);
@@ -356,75 +417,11 @@
             axWindowsMediaPlayer1.Size = new Size(210, 208);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(351, 218);
-            label3.Name = "label3";
-            label3.Size = new Size(46, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Source:";
-            // 
-            // lblHorizontalX
-            // 
-            lblHorizontalX.AutoSize = true;
-            lblHorizontalX.Location = new Point(17, 19);
-            lblHorizontalX.Name = "lblHorizontalX";
-            lblHorizontalX.Size = new Size(72, 15);
-            lblHorizontalX.TabIndex = 13;
-            lblHorizontalX.Text = "Horizontal X";
-            // 
-            // lblStartX
-            // 
-            lblStartX.AutoSize = true;
-            lblStartX.Location = new Point(17, 37);
-            lblStartX.Name = "lblStartX";
-            lblStartX.Size = new Size(41, 15);
-            lblStartX.TabIndex = 13;
-            lblStartX.Text = "Start X";
-            // 
-            // lblEndX
-            // 
-            lblEndX.AutoSize = true;
-            lblEndX.Location = new Point(117, 37);
-            lblEndX.Name = "lblEndX";
-            lblEndX.Size = new Size(37, 15);
-            lblEndX.TabIndex = 14;
-            lblEndX.Text = "End X";
-            // 
-            // lblStartY
-            // 
-            lblStartY.AutoSize = true;
-            lblStartY.Location = new Point(17, 95);
-            lblStartY.Name = "lblStartY";
-            lblStartY.Size = new Size(37, 15);
-            lblStartY.TabIndex = 15;
-            lblStartY.Text = "End Y";
-            // 
-            // lblEndY
-            // 
-            lblEndY.AutoSize = true;
-            lblEndY.Location = new Point(117, 95);
-            lblEndY.Name = "lblEndY";
-            lblEndY.Size = new Size(37, 15);
-            lblEndY.TabIndex = 16;
-            lblEndY.Text = "End Y";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(17, 80);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 15);
-            label2.TabIndex = 14;
-            label2.Text = "Vertical Y";
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(749, 450);
-            Controls.Add(label3);
             Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(groupBox1);
             Controls.Add(btnProcess);
@@ -450,7 +447,6 @@
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -471,21 +467,20 @@
         private TextBox txtFinalY;
         private TextBox txtInitialX;
         private TextBox txtFinalX;
-        private TextBox textBox1;
+        private TextBox txtSufix;
         private Button btnProcess;
         private Label label1;
         private Label lblDestination;
         private Label lblSource;
         private Label lblStartTime;
         private Label lblEndTime;
-        private HScrollBar hScrollBar1;
+        private HScrollBar hScrollBarAngle;
         private Label lblAngle;
         private GroupBox groupBox1;
         private CheckBox chkOriginalAudio;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private Button btnPathDestination;
         private Button btnPathSource;
-        private Label label3;
         private Label lblHorizontalX;
         private Label lblStartX;
         private Label lblEndY;
