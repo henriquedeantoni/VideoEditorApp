@@ -78,16 +78,20 @@ public partial class Form1 : Form
 
     private void txtAngle_TextChanged(object sender, EventArgs e)
     {
-
+        if(int.TryParse(txtAngle.Text, out int angle))
+        {
+            if (angle >= hScrollBarAngle.Minimum && angle <= hScrollBarAngle.Maximum)
+            {
+                hScrollBarAngle.Value = angle;
+            }
+        }
     }
 
     private void hScrollBarAngle_Scroll(object sender, ScrollEventArgs e)
     {
-
+        txtAngle.Text = hScrollBarAngle.Value.ToString();
     }
 
     #endregion
 
-
-    
 }

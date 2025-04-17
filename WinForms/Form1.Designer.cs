@@ -32,7 +32,6 @@
             txtInput = new TextBox();
             txtOutput = new TextBox();
             txtStart = new TextBox();
-            txtEnd = new TextBox();
             gbxPath = new GroupBox();
             btnPathDestination = new Button();
             btnPathSource = new Button();
@@ -65,6 +64,13 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            vScrollBar1 = new VScrollBar();
+            vScrollBar2 = new VScrollBar();
+            textBox1 = new TextBox();
+            vScrollBar3 = new VScrollBar();
+            textBox2 = new TextBox();
+            vScrollBar4 = new VScrollBar();
+            textBox3 = new TextBox();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -92,15 +98,8 @@
             // 
             txtStart.Location = new Point(15, 36);
             txtStart.Name = "txtStart";
-            txtStart.Size = new Size(100, 23);
+            txtStart.Size = new Size(34, 23);
             txtStart.TabIndex = 2;
-            // 
-            // txtEnd
-            // 
-            txtEnd.Location = new Point(137, 36);
-            txtEnd.Name = "txtEnd";
-            txtEnd.Size = new Size(100, 23);
-            txtEnd.TabIndex = 3;
             // 
             // gbxPath
             // 
@@ -176,10 +175,16 @@
             // 
             // gbxCutTime
             // 
+            gbxCutTime.Controls.Add(vScrollBar3);
+            gbxCutTime.Controls.Add(textBox2);
+            gbxCutTime.Controls.Add(vScrollBar4);
+            gbxCutTime.Controls.Add(textBox3);
+            gbxCutTime.Controls.Add(vScrollBar2);
+            gbxCutTime.Controls.Add(textBox1);
+            gbxCutTime.Controls.Add(vScrollBar1);
             gbxCutTime.Controls.Add(lblEndTime);
             gbxCutTime.Controls.Add(lblStartTime);
             gbxCutTime.Controls.Add(txtStart);
-            gbxCutTime.Controls.Add(txtEnd);
             gbxCutTime.Location = new Point(389, 12);
             gbxCutTime.Name = "gbxCutTime";
             gbxCutTime.Size = new Size(271, 119);
@@ -417,6 +422,55 @@
             axWindowsMediaPlayer1.Size = new Size(210, 208);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(15, 62);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(34, 31);
+            vScrollBar1.TabIndex = 14;
+            // 
+            // vScrollBar2
+            // 
+            vScrollBar2.Location = new Point(67, 63);
+            vScrollBar2.Name = "vScrollBar2";
+            vScrollBar2.Size = new Size(34, 31);
+            vScrollBar2.TabIndex = 16;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(67, 37);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(34, 23);
+            textBox1.TabIndex = 15;
+            // 
+            // vScrollBar3
+            // 
+            vScrollBar3.Location = new Point(180, 63);
+            vScrollBar3.Name = "vScrollBar3";
+            vScrollBar3.Size = new Size(34, 31);
+            vScrollBar3.TabIndex = 20;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(180, 37);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(34, 23);
+            textBox2.TabIndex = 19;
+            // 
+            // vScrollBar4
+            // 
+            vScrollBar4.Location = new Point(128, 62);
+            vScrollBar4.Name = "vScrollBar4";
+            vScrollBar4.Size = new Size(34, 31);
+            vScrollBar4.TabIndex = 18;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(128, 36);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(34, 23);
+            textBox3.TabIndex = 17;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -454,7 +508,6 @@
         private TextBox txtInput;
         private TextBox txtOutput;
         private TextBox txtStart;
-        private TextBox txtEnd;
         private GroupBox gbxPath;
         private GroupBox gbxCutTime;
         private GroupBox gbxMirror;
@@ -487,5 +540,12 @@
         private Label lblStartY;
         private Label lblEndX;
         private Label label2;
+        private VScrollBar vScrollBar1;
+        private VScrollBar vScrollBar3;
+        private TextBox textBox2;
+        private VScrollBar vScrollBar4;
+        private TextBox textBox3;
+        private VScrollBar vScrollBar2;
+        private TextBox textBox1;
     }
 }
