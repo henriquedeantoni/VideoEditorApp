@@ -40,6 +40,13 @@
             lblSource = new Label();
             txtSufix = new TextBox();
             gbxCutTime = new GroupBox();
+            vScrollBar3 = new VScrollBar();
+            textBox2 = new TextBox();
+            vScrollBar4 = new VScrollBar();
+            textBox3 = new TextBox();
+            vScrollBar2 = new VScrollBar();
+            textBox1 = new TextBox();
+            vScrollBar1 = new VScrollBar();
             lblEndTime = new Label();
             lblStartTime = new Label();
             gbxMirror = new GroupBox();
@@ -64,13 +71,10 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
-            vScrollBar1 = new VScrollBar();
-            vScrollBar2 = new VScrollBar();
-            textBox1 = new TextBox();
-            vScrollBar3 = new VScrollBar();
-            textBox2 = new TextBox();
-            vScrollBar4 = new VScrollBar();
-            textBox3 = new TextBox();
+            startMinutes = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -96,7 +100,7 @@
             // 
             // txtStart
             // 
-            txtStart.Location = new Point(15, 36);
+            txtStart.Location = new Point(15, 53);
             txtStart.Name = "txtStart";
             txtStart.Size = new Size(34, 23);
             txtStart.TabIndex = 2;
@@ -175,6 +179,10 @@
             // 
             // gbxCutTime
             // 
+            gbxCutTime.Controls.Add(label5);
+            gbxCutTime.Controls.Add(label4);
+            gbxCutTime.Controls.Add(label3);
+            gbxCutTime.Controls.Add(startMinutes);
             gbxCutTime.Controls.Add(vScrollBar3);
             gbxCutTime.Controls.Add(textBox2);
             gbxCutTime.Controls.Add(vScrollBar4);
@@ -191,6 +199,55 @@
             gbxCutTime.TabIndex = 5;
             gbxCutTime.TabStop = false;
             gbxCutTime.Text = "Cut Time";
+            // 
+            // vScrollBar3
+            // 
+            vScrollBar3.Location = new Point(180, 80);
+            vScrollBar3.Name = "vScrollBar3";
+            vScrollBar3.Size = new Size(34, 31);
+            vScrollBar3.TabIndex = 20;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(180, 54);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(34, 23);
+            textBox2.TabIndex = 19;
+            // 
+            // vScrollBar4
+            // 
+            vScrollBar4.Location = new Point(128, 79);
+            vScrollBar4.Name = "vScrollBar4";
+            vScrollBar4.Size = new Size(34, 31);
+            vScrollBar4.TabIndex = 18;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(128, 53);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(34, 23);
+            textBox3.TabIndex = 17;
+            // 
+            // vScrollBar2
+            // 
+            vScrollBar2.Location = new Point(67, 80);
+            vScrollBar2.Name = "vScrollBar2";
+            vScrollBar2.Size = new Size(34, 31);
+            vScrollBar2.TabIndex = 16;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(67, 54);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(34, 23);
+            textBox1.TabIndex = 15;
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(15, 79);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(34, 31);
+            vScrollBar1.TabIndex = 14;
             // 
             // lblEndTime
             // 
@@ -422,54 +479,41 @@
             axWindowsMediaPlayer1.Size = new Size(210, 208);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
-            // vScrollBar1
+            // startMinutes
             // 
-            vScrollBar1.Location = new Point(15, 62);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(34, 31);
-            vScrollBar1.TabIndex = 14;
+            startMinutes.AutoSize = true;
+            startMinutes.Location = new Point(15, 34);
+            startMinutes.Name = "startMinutes";
+            startMinutes.Size = new Size(31, 15);
+            startMinutes.TabIndex = 21;
+            startMinutes.Text = "Min.";
             // 
-            // vScrollBar2
+            // label3
             // 
-            vScrollBar2.Location = new Point(67, 63);
-            vScrollBar2.Name = "vScrollBar2";
-            vScrollBar2.Size = new Size(34, 31);
-            vScrollBar2.TabIndex = 16;
+            label3.AutoSize = true;
+            label3.Location = new Point(67, 34);
+            label3.Name = "label3";
+            label3.Size = new Size(31, 15);
+            label3.TabIndex = 22;
+            label3.Text = "Min.";
             // 
-            // textBox1
+            // label4
             // 
-            textBox1.Location = new Point(67, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(34, 23);
-            textBox1.TabIndex = 15;
+            label4.AutoSize = true;
+            label4.Location = new Point(128, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(31, 15);
+            label4.TabIndex = 23;
+            label4.Text = "Min.";
             // 
-            // vScrollBar3
+            // label5
             // 
-            vScrollBar3.Location = new Point(180, 63);
-            vScrollBar3.Name = "vScrollBar3";
-            vScrollBar3.Size = new Size(34, 31);
-            vScrollBar3.TabIndex = 20;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(180, 37);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(34, 23);
-            textBox2.TabIndex = 19;
-            // 
-            // vScrollBar4
-            // 
-            vScrollBar4.Location = new Point(128, 62);
-            vScrollBar4.Name = "vScrollBar4";
-            vScrollBar4.Size = new Size(34, 31);
-            vScrollBar4.TabIndex = 18;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(128, 36);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(34, 23);
-            textBox3.TabIndex = 17;
+            label5.AutoSize = true;
+            label5.Location = new Point(180, 36);
+            label5.Name = "label5";
+            label5.Size = new Size(31, 15);
+            label5.TabIndex = 23;
+            label5.Text = "Min.";
             // 
             // Form1
             // 
@@ -547,5 +591,9 @@
         private TextBox textBox3;
         private VScrollBar vScrollBar2;
         private TextBox textBox1;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label startMinutes;
     }
 }
