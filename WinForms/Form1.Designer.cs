@@ -31,8 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             txtInput = new TextBox();
             txtOutput = new TextBox();
-            txtStart = new TextBox();
-            txtEnd = new TextBox();
+            txtStarMinutes = new TextBox();
             gbxPath = new GroupBox();
             btnPathDestination = new Button();
             btnPathSource = new Button();
@@ -41,6 +40,17 @@
             lblSource = new Label();
             txtSufix = new TextBox();
             gbxCutTime = new GroupBox();
+            lblEndSeconds = new Label();
+            lblEndMinutes = new Label();
+            lblStartSeconds = new Label();
+            lblStartMinutes = new Label();
+            vScrollBarEndSec = new VScrollBar();
+            txtEndSeconds = new TextBox();
+            vScrollBarEndMin = new VScrollBar();
+            txtEndMinutes = new TextBox();
+            vScrollBarStartSec = new VScrollBar();
+            txtStartSeconds = new TextBox();
+            vScrollBarStartMin = new VScrollBar();
             lblEndTime = new Label();
             lblStartTime = new Label();
             gbxMirror = new GroupBox();
@@ -88,19 +98,12 @@
             txtOutput.Size = new Size(100, 23);
             txtOutput.TabIndex = 1;
             // 
-            // txtStart
+            // txtStarMinutes
             // 
-            txtStart.Location = new Point(15, 36);
-            txtStart.Name = "txtStart";
-            txtStart.Size = new Size(100, 23);
-            txtStart.TabIndex = 2;
-            // 
-            // txtEnd
-            // 
-            txtEnd.Location = new Point(137, 36);
-            txtEnd.Name = "txtEnd";
-            txtEnd.Size = new Size(100, 23);
-            txtEnd.TabIndex = 3;
+            txtStarMinutes.Location = new Point(15, 53);
+            txtStarMinutes.Name = "txtStarMinutes";
+            txtStarMinutes.Size = new Size(34, 23);
+            txtStarMinutes.TabIndex = 2;
             // 
             // gbxPath
             // 
@@ -176,16 +179,111 @@
             // 
             // gbxCutTime
             // 
+            gbxCutTime.Controls.Add(lblEndSeconds);
+            gbxCutTime.Controls.Add(lblEndMinutes);
+            gbxCutTime.Controls.Add(lblStartSeconds);
+            gbxCutTime.Controls.Add(lblStartMinutes);
+            gbxCutTime.Controls.Add(vScrollBarEndSec);
+            gbxCutTime.Controls.Add(txtEndSeconds);
+            gbxCutTime.Controls.Add(vScrollBarEndMin);
+            gbxCutTime.Controls.Add(txtEndMinutes);
+            gbxCutTime.Controls.Add(vScrollBarStartSec);
+            gbxCutTime.Controls.Add(txtStartSeconds);
+            gbxCutTime.Controls.Add(vScrollBarStartMin);
             gbxCutTime.Controls.Add(lblEndTime);
             gbxCutTime.Controls.Add(lblStartTime);
-            gbxCutTime.Controls.Add(txtStart);
-            gbxCutTime.Controls.Add(txtEnd);
+            gbxCutTime.Controls.Add(txtStarMinutes);
             gbxCutTime.Location = new Point(389, 12);
             gbxCutTime.Name = "gbxCutTime";
             gbxCutTime.Size = new Size(271, 119);
             gbxCutTime.TabIndex = 5;
             gbxCutTime.TabStop = false;
             gbxCutTime.Text = "Cut Time";
+            // 
+            // lblEndSeconds
+            // 
+            lblEndSeconds.AutoSize = true;
+            lblEndSeconds.Location = new Point(180, 36);
+            lblEndSeconds.Name = "lblEndSeconds";
+            lblEndSeconds.Size = new Size(27, 15);
+            lblEndSeconds.TabIndex = 23;
+            lblEndSeconds.Text = "sec.";
+            // 
+            // lblEndMinutes
+            // 
+            lblEndMinutes.AutoSize = true;
+            lblEndMinutes.Location = new Point(128, 35);
+            lblEndMinutes.Name = "lblEndMinutes";
+            lblEndMinutes.Size = new Size(31, 15);
+            lblEndMinutes.TabIndex = 23;
+            lblEndMinutes.Text = "Min.";
+            // 
+            // lblStartSeconds
+            // 
+            lblStartSeconds.AutoSize = true;
+            lblStartSeconds.Location = new Point(67, 34);
+            lblStartSeconds.Name = "lblStartSeconds";
+            lblStartSeconds.Size = new Size(27, 15);
+            lblStartSeconds.TabIndex = 22;
+            lblStartSeconds.Text = "sec.";
+            // 
+            // lblStartMinutes
+            // 
+            lblStartMinutes.AutoSize = true;
+            lblStartMinutes.Location = new Point(15, 34);
+            lblStartMinutes.Name = "lblStartMinutes";
+            lblStartMinutes.Size = new Size(31, 15);
+            lblStartMinutes.TabIndex = 21;
+            lblStartMinutes.Text = "Min.";
+            // 
+            // vScrollBarEndSec
+            // 
+            vScrollBarEndSec.Location = new Point(180, 80);
+            vScrollBarEndSec.Name = "vScrollBarEndSec";
+            vScrollBarEndSec.Size = new Size(34, 31);
+            vScrollBarEndSec.TabIndex = 20;
+            // 
+            // txtEndSeconds
+            // 
+            txtEndSeconds.Location = new Point(180, 53);
+            txtEndSeconds.Name = "txtEndSeconds";
+            txtEndSeconds.Size = new Size(34, 23);
+            txtEndSeconds.TabIndex = 19;
+            // 
+            // vScrollBarEndMin
+            // 
+            vScrollBarEndMin.Location = new Point(128, 79);
+            vScrollBarEndMin.Name = "vScrollBarEndMin";
+            vScrollBarEndMin.Size = new Size(34, 31);
+            vScrollBarEndMin.TabIndex = 18;
+            // 
+            // txtEndMinutes
+            // 
+            txtEndMinutes.Location = new Point(128, 53);
+            txtEndMinutes.Name = "txtEndMinutes";
+            txtEndMinutes.Size = new Size(34, 23);
+            txtEndMinutes.TabIndex = 17;
+            // 
+            // vScrollBarStartSec
+            // 
+            vScrollBarStartSec.Location = new Point(67, 80);
+            vScrollBarStartSec.Name = "vScrollBarStartSec";
+            vScrollBarStartSec.Size = new Size(34, 31);
+            vScrollBarStartSec.TabIndex = 16;
+            // 
+            // txtStartSeconds
+            // 
+            txtStartSeconds.Location = new Point(67, 53);
+            txtStartSeconds.Name = "txtStartSeconds";
+            txtStartSeconds.Size = new Size(34, 23);
+            txtStartSeconds.TabIndex = 15;
+            // 
+            // vScrollBarStartMin
+            // 
+            vScrollBarStartMin.Location = new Point(15, 79);
+            vScrollBarStartMin.Name = "vScrollBarStartMin";
+            vScrollBarStartMin.Size = new Size(34, 31);
+            vScrollBarStartMin.TabIndex = 14;
             // 
             // lblEndTime
             // 
@@ -453,8 +551,7 @@
 
         private TextBox txtInput;
         private TextBox txtOutput;
-        private TextBox txtStart;
-        private TextBox txtEnd;
+        private TextBox txtStarMinutes;
         private GroupBox gbxPath;
         private GroupBox gbxCutTime;
         private GroupBox gbxMirror;
@@ -487,5 +584,16 @@
         private Label lblStartY;
         private Label lblEndX;
         private Label label2;
+        private VScrollBar vScrollBarStartMin;
+        private VScrollBar vScrollBarEndSec;
+        private TextBox txtEndSeconds;
+        private VScrollBar vScrollBarEndMin;
+        private TextBox txtEndMinutes;
+        private VScrollBar vScrollBarStartSec;
+        private TextBox txtStartSeconds;
+        private Label lblEndSeconds;
+        private Label lblEndMinutes;
+        private Label lblStartSeconds;
+        private Label lblStartMinutes;
     }
 }
