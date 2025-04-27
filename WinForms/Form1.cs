@@ -1,3 +1,5 @@
+using Infrastructure;
+
 namespace WinForms;
 
 public partial class Form1 : Form
@@ -21,6 +23,11 @@ public partial class Form1 : Form
         btnPathDestination.Size = new Size(32, 32);
         btnPathDestination.FlatStyle = FlatStyle.Flat;
 
+        txtStartMinutes.Text = "0";
+        txtStartSeconds.Text = "0";
+        txtEndMinutes.Text = "0";
+        txtEndSeconds.Text = "0";
+
         txtAngle.Text = hScrollBarAngle.Value.ToString();
 
         // Evento de mudança da ScrollBar
@@ -30,20 +37,24 @@ public partial class Form1 : Form
         txtAngle.TextChanged += txtAngle_TextChanged;
     }
 
-    private void checkBox2_CheckedChanged(object sender, EventArgs e)
+    public void LoadVideoValues(string videoPath)
     {
+        FfmpegService ffmpegService = new FfmpegService();
+        var duration = ffmpegService.GetVideoDuration(videoPath);
 
+        if(duration.HasValue)
+        {
+            int totalMinutes = (int)duration.Value.TotalMinutes;
+            int remainingSeconds = duration.Value.Seconds;
+
+            txtStartMinutes.Text = "0";
+            txtStartSeconds.Text = "0";
+
+            txtEndMinutes.Text = totalMinutes.ToString();
+            txtEndSeconds.Text = remainingSeconds.ToString();
+        }
     }
 
-    private void lblSource_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    private void Form1_Load(object sender, EventArgs e)
-    {
-
-    }
 
     #region
     private void btnPathSource_Click(object sender, EventArgs e)
@@ -57,8 +68,12 @@ public partial class Form1 : Form
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 txtInput.Text = openFileDialog.FileName;
+                axWindowsMediaPlayer1.URL = openFileDialog.FileName;
+                LoadVideoValues(openFileDialog.FileName);
+
             }
         }
+
     }
 
     private void btnPathDestination_Click(object sender, EventArgs e)
