@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             txtInput = new TextBox();
             txtOutput = new TextBox();
-            txtStarMinutes = new TextBox();
+            txtStartMinutes = new TextBox();
             gbxPath = new GroupBox();
             btnPathDestination = new Button();
             btnPathSource = new Button();
@@ -98,12 +98,12 @@
             txtOutput.Size = new Size(100, 23);
             txtOutput.TabIndex = 1;
             // 
-            // txtStarMinutes
+            // txtStartMinutes
             // 
-            txtStarMinutes.Location = new Point(15, 53);
-            txtStarMinutes.Name = "txtStarMinutes";
-            txtStarMinutes.Size = new Size(34, 23);
-            txtStarMinutes.TabIndex = 2;
+            txtStartMinutes.Location = new Point(15, 53);
+            txtStartMinutes.Name = "txtStartMinutes";
+            txtStartMinutes.Size = new Size(34, 23);
+            txtStartMinutes.TabIndex = 2;
             // 
             // gbxPath
             // 
@@ -168,7 +168,6 @@
             lblSource.Size = new Size(46, 15);
             lblSource.TabIndex = 10;
             lblSource.Text = "Source:";
-            lblSource.Click += lblSource_Click;
             // 
             // txtSufix
             // 
@@ -192,7 +191,7 @@
             gbxCutTime.Controls.Add(vScrollBarStartMin);
             gbxCutTime.Controls.Add(lblEndTime);
             gbxCutTime.Controls.Add(lblStartTime);
-            gbxCutTime.Controls.Add(txtStarMinutes);
+            gbxCutTime.Controls.Add(txtStartMinutes);
             gbxCutTime.Location = new Point(389, 12);
             gbxCutTime.Name = "gbxCutTime";
             gbxCutTime.Size = new Size(271, 119);
@@ -504,7 +503,6 @@
             chkOriginalAudio.TabIndex = 9;
             chkOriginalAudio.Text = "Keep Original Audio";
             chkOriginalAudio.UseVisualStyleBackColor = true;
-            chkOriginalAudio.CheckedChanged += checkBox2_CheckedChanged;
             // 
             // axWindowsMediaPlayer1
             // 
@@ -530,7 +528,6 @@
             Controls.Add(gbxPath);
             Name = "Form1";
             Text = "Main Editor";
-            Load += Form1_Load;
             gbxPath.ResumeLayout(false);
             gbxPath.PerformLayout();
             gbxCutTime.ResumeLayout(false);
@@ -551,7 +548,7 @@
 
         private TextBox txtInput;
         private TextBox txtOutput;
-        private TextBox txtStarMinutes;
+        private TextBox txtStartMinutes;
         private GroupBox gbxPath;
         private GroupBox gbxCutTime;
         private GroupBox gbxMirror;

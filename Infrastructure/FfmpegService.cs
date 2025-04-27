@@ -52,4 +52,31 @@ public class FfmpegService
         process.Start();
         process.WaitForExit();
     }
+
+    public TimeSpan? GetVideoDuration(string videoPath)
+    {
+        var process = new Process
+        {
+            StartInfo = new ProcessStartInfo
+            {
+                FileName = "ffprobe",
+                Arguments = $"-v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 \"{videoPath}\"",
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+            }
+        };
+
+        process.Start();
+        string output = process.StandardOutput.ReadToEnd();
+        process.WaitForExit();
+
+        if(double.TryParse(output.Trim(), System.Globalization.CultureInfo.InvariantCulture, out double seconds))
+        {
+            return TimeSpan.FromSeconds(seconds);
+        }
+
+        return null;
+    }
 }

@@ -104,4 +104,28 @@ public class VideoEditOptionsConfiguration
         get { return _cropYEnd; }
         set {  _cropYEnd = CropYEnd;} 
     }
+
+    public VideoEditOptionsConfiguration(string inputPath, string outputPath, int startMinutes, int startSeconds, int endMinutes, int endSeconds, TimeSpan startTime, TimeSpan endTime, bool mirrorHorizontal, bool mirrorVertical, float rotationAngle, int? cropXStart, int? cropXEnd, int? cropYStart, int? cropYEnd)
+    {
+        InputPath = inputPath;
+        OutputPath = outputPath;
+        StartMinutes = startMinutes;
+        StartSeconds = startSeconds;
+        EndMinutes = endMinutes;
+        EndSeconds = endSeconds;
+        StartTime = MinutesSecondsToTimeSpan(startMinutes, startSeconds);
+        EndTime = MinutesSecondsToTimeSpan(endMinutes, endSeconds); ;
+        MirrorHorizontal = mirrorHorizontal;
+        MirrorVertical = mirrorVertical;
+        RotationAngle = rotationAngle;
+        CropXStart = cropXStart;
+        CropXEnd = cropXEnd;
+        CropYStart = cropYStart;
+        CropYEnd = cropYEnd;
+    }
+
+    private TimeSpan MinutesSecondsToTimeSpan(int minutes, int seconds)
+    {
+        return new TimeSpan(0, minutes, seconds);
+    }
 }
