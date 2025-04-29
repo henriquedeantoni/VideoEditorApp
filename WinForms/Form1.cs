@@ -4,6 +4,11 @@ namespace WinForms;
 
 public partial class Form1 : Form
 {
+    private int maxMinutesLimit;
+    private int maxSecondsLimit;
+    private int minMinutesLimit = 0;
+    private int minSecondsLimit = 0;
+
     static string imagePathDestinity = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "closeIcon.png");
     static string imagePathSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "openIcon.png");
 
