@@ -194,7 +194,7 @@
             gbxCutTime.Controls.Add(txtStartMinutes);
             gbxCutTime.Location = new Point(389, 12);
             gbxCutTime.Name = "gbxCutTime";
-            gbxCutTime.Size = new Size(271, 119);
+            gbxCutTime.Size = new Size(224, 119);
             gbxCutTime.TabIndex = 5;
             gbxCutTime.TabStop = false;
             gbxCutTime.Text = "Cut Time";
@@ -338,7 +338,7 @@
             gbxAngle.Controls.Add(hScrollBarAngle);
             gbxAngle.Controls.Add(lblAngle);
             gbxAngle.Controls.Add(txtAngle);
-            gbxAngle.Location = new Point(252, 145);
+            gbxAngle.Location = new Point(637, 23);
             gbxAngle.Name = "gbxAngle";
             gbxAngle.Size = new Size(170, 100);
             gbxAngle.TabIndex = 7;
@@ -475,7 +475,7 @@
             // 
             // btnProcess
             // 
-            btnProcess.Location = new Point(591, 415);
+            btnProcess.Location = new Point(886, 657);
             btnProcess.Name = "btnProcess";
             btnProcess.Size = new Size(128, 23);
             btnProcess.TabIndex = 9;
@@ -485,9 +485,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(chkOriginalAudio);
-            groupBox1.Location = new Point(258, 266);
+            groupBox1.Location = new Point(18, 454);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(164, 146);
+            groupBox1.Size = new Size(164, 67);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Audio Config";
@@ -497,7 +497,7 @@
             chkOriginalAudio.AutoSize = true;
             chkOriginalAudio.Checked = true;
             chkOriginalAudio.CheckState = CheckState.Checked;
-            chkOriginalAudio.Location = new Point(16, 33);
+            chkOriginalAudio.Location = new Point(6, 31);
             chkOriginalAudio.Name = "chkOriginalAudio";
             chkOriginalAudio.Size = new Size(132, 19);
             chkOriginalAudio.TabIndex = 9;
@@ -507,17 +507,17 @@
             // axWindowsMediaPlayer1
             // 
             axWindowsMediaPlayer1.Enabled = true;
-            axWindowsMediaPlayer1.Location = new Point(509, 162);
+            axWindowsMediaPlayer1.Location = new Point(312, 155);
             axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             axWindowsMediaPlayer1.OcxState = (AxHost.State)resources.GetObject("axWindowsMediaPlayer1.OcxState");
-            axWindowsMediaPlayer1.Size = new Size(210, 208);
+            axWindowsMediaPlayer1.Size = new Size(584, 456);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(749, 450);
+            ClientSize = new Size(1038, 692);
             Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(groupBox1);
             Controls.Add(btnProcess);

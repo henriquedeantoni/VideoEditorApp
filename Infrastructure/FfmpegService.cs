@@ -79,4 +79,36 @@ public class FfmpegService
 
         return null;
     }
+
+    public static (int Width, int Height) GetVideoDimensions(string videoPath)
+    {
+        var ffprobePath = "ffprobe"; 
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = ffprobePath,
+            Arguments = $"-v error -select_streams v:0 -show_entries stream=width,height -of csv=s=x:p=0 \"{videoPath}\"",
+            RedirectStandardOutput = true,
+            UseShellExecute = false,
+            CreateNoWindow = true
+        };
+
+        using (var process = Process.Start(startInfo))
+        {
+            string output = process.StandardOutput.ReadToEnd();
+            process.WaitForExit();
+
+            if (!string.IsNullOrWhiteSpace(output))
+            {
+                var parts = output.Trim().Split('x');
+                if (parts.Length == 2 &&
+                    int.TryParse(parts[0], out int width) &&
+                    int.TryParse(parts[1], out int height))
+                {
+                    return (width, height);
+                }
+            }
+        }
+
+        throw new Exception("Video dimensions information not available ( ffmpeg services ) ");
+    }
 }
