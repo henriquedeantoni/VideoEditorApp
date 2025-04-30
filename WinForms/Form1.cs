@@ -1,4 +1,5 @@
 using Infrastructure;
+using System.IO;
 
 namespace WinForms;
 
@@ -45,19 +46,41 @@ public partial class Form1 : Form
     public void LoadVideoValues(string videoPath)
     {
         FfmpegService ffmpegService = new FfmpegService();
-        var duration = ffmpegService.GetVideoDuration(videoPath);
 
-        if(duration.HasValue)
+        try
         {
-            int totalMinutes = (int)duration.Value.TotalMinutes;
-            int remainingSeconds = duration.Value.Seconds;
+            var duration = ffmpegService.GetVideoDuration(videoPath);
+            if (duration.HasValue)
+            {
+                int totalMinutes = (int)duration.Value.TotalMinutes;
+                int remainingSeconds = duration.Value.Seconds;
 
-            txtStartMinutes.Text = "0";
-            txtStartSeconds.Text = "0";
+                txtStartMinutes.Text = "0";
+                txtStartSeconds.Text = "0";
 
-            txtEndMinutes.Text = totalMinutes.ToString();
-            txtEndSeconds.Text = remainingSeconds.ToString();
+                txtEndMinutes.Text = totalMinutes.ToString();
+                txtEndSeconds.Text = remainingSeconds.ToString();
+            }
         }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro to get video duration info: " + ex.Message);
+        }
+
+        try
+        {
+            var (width, height) = FfmpegService.GetVideoDimensions(videoPath);
+
+            txtInitialX.Text = "0";
+            txtFinalX.Text = width.ToString();
+            lblStartY.Text = "0";
+            lblEndY.Text = height.ToString();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro to get video dimensions info: " + ex.Message);
+        }
+
     }
 
 
@@ -98,7 +121,7 @@ public partial class Form1 : Form
 
     private void txtAngle_TextChanged(object sender, EventArgs e)
     {
-        if(int.TryParse(txtAngle.Text, out int angle))
+        if (int.TryParse(txtAngle.Text, out int angle))
         {
             if (angle >= hScrollBarAngle.Minimum && angle <= hScrollBarAngle.Maximum)
             {
