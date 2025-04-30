@@ -27,82 +27,82 @@ public class VideoEditOptionsConfiguration
     public string InputPath 
     {
         get { return _inputPath; }
-        set { _inputPath = InputPath; } 
+        set { _inputPath = value; } 
     }
     public string OutputPath
     {
         get { return _outputPath; } 
-        set { _outputPath = OutputPath; }
+        set { _outputPath = value; }
     }
     public int StartMinutes
     {
         get { return _startMinutes; }
-        set { _startMinutes = StartMinutes; }
+        set { _startMinutes = value; }
     }
     public int StartSeconds
     {
         get { return _startSeconds; }
-        set { _startSeconds = StartSeconds; }
+        set { _startSeconds = value; }
     }
     public int EndMinutes
     {
         get { return _endMinutes; }
-        set { _endMinutes = EndMinutes; }
+        set { _endMinutes = value; }
     }
     public int EndSeconds
     {
         get { return _endSeconds; }
-        set { _endSeconds = EndSeconds; }
+        set { _endSeconds = value; }
     }
     
 
     public TimeSpan StartTime 
     {
         get { return _startTime; } 
-        set { _startTime = StartTime; }
+        set { _startTime = value; }
     }
     public TimeSpan EndTime
     {
         get { return _endTime; }
-        set { _endTime = EndTime; }
+        set { _endTime = value; }
     }
 
     public bool MirrorHorizontal 
     { 
         get { return _mirrorHorizontal; } 
-        set { _mirrorHorizontal = MirrorHorizontal; }
+        set { _mirrorHorizontal = value; }
     }
     public bool MirrorVertical 
     { 
         get { return _mirrorVertical; } 
-        set { _mirrorVertical = MirrorVertical; }
+        set { _mirrorVertical = value; }
     }
 
     public float RotationAngle // Degrees clockwise
     {
         get { return _rotationAngle; }
-        set { _rotationAngle = RotationAngle; }
+        set { _rotationAngle = value; }
     }
 
     public int? CropXStart
     { 
         get { return _cropXStart; }
-        set { _cropXStart = CropXEnd; }
+        set { _cropXStart = value; }
     }
     public int? CropXEnd 
     { 
         get { return _cropXEnd; }
-        set { _cropXEnd = CropXStart;}
+        set { _cropXEnd = value; }
     }
     public int? CropYStart
     { 
         get { return _cropYStart; }
-        set { _cropYStart = CropYStart; }
+        set { _cropYStart = value; }
     }
     public int? CropYEnd 
     { 
         get { return _cropYEnd; }
-        set {  _cropYEnd = CropYEnd;} 
+        set {  _cropYEnd = value; } 
     }
 
     public VideoEditOptionsConfiguration(string inputPath, string outputPath, int startMinutes, int startSeconds, int endMinutes, int endSeconds, TimeSpan startTime, TimeSpan endTime, bool mirrorHorizontal, bool mirrorVertical, float rotationAngle, int? cropXStart, int? cropXEnd, int? cropYStart, int? cropYEnd)
