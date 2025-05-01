@@ -1,3 +1,4 @@
+using Core.Models;
 using Infrastructure;
 using System.IO;
 
@@ -137,4 +138,36 @@ public partial class Form1 : Form
 
     #endregion
 
+    private void btnProcess_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            //int totalMinutes = int.TryParse(txtMinutes.Text, out int mins) ? mins : 0;
+            //int remainingSeconds = int.TryParse(txtEndSeconds.Text, out int secs) ? secs : 0;
+
+            var editOptions = new VideoEditOptionsConfiguration(
+            inputPath: txtInput.Text,
+            outputPath: txtInput.Text + txtSufix.Text,
+            startMinutes: 0,
+            startSeconds: 0,
+            endMinutes: totalMinutes,
+            endSeconds: remainingSeconds,
+            startTime: new TimeSpan(0, 0, 0),
+            endTime: new TimeSpan(0, totalMinutes, remainingSeconds),
+            mirrorHorizontal: chkMirrorH.Checked,
+            mirrorVertical: chkMirrorV.Checked,
+            rotationAngle: float.TryParse(txtAngle.Text, out float angle) ? angle : 0f,
+            cropXStart: int.TryParse(txtInitialX.Text, out int cropXStart) ? cropXStart : (int?)null,
+            cropXEnd: int.TryParse(txtFinalX.Text, out int cropXEnd) ? cropXEnd : (int?)null,
+            cropYStart: int.TryParse(lblStartY.Text, out int cropYStart) ? cropYStart : (int?)null,
+            cropYEnd: int.TryParse(lblEndY.Text, out int cropYEnd) ? cropYEnd : (int?)null
+            );
+
+            MessageBox.Show("Values saved with success!");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error on saving values: " + ex.Message);
+        }
+    }
 }

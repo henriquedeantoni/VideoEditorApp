@@ -481,6 +481,7 @@
             btnProcess.TabIndex = 9;
             btnProcess.Text = "Process Changes";
             btnProcess.UseVisualStyleBackColor = true;
+            btnProcess.Click += btnProcess_Click;
             // 
             // groupBox1
             // 
