@@ -141,6 +141,7 @@ public partial class Form1 : Form
     private void btnProcess_Click(object sender, EventArgs e)
     {
         SaveValues();
+        ProcessVideo();
     }
 
     public void SaveValues()
@@ -171,6 +172,27 @@ public partial class Form1 : Form
         catch (Exception ex)
         {
             MessageBox.Show("Error on saving values: " + ex.Message);
+        }
+    }
+
+    public void ProcessVideo()
+    {
+        if (EditOptions == null)
+        {
+            MessageBox.Show("Edit options not set. Please save values before processing.");
+            return;
+        }
+
+        try
+        {
+            // Aqui você chama seu serviço de processamento — exemplo fictício:
+            FfmpegService.ProcessVideo(EditOptions);
+
+            MessageBox.Show("Video processed successfully!");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error during video processing: " + ex.Message);
         }
     }
 }
