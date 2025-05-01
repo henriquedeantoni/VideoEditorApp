@@ -1,3 +1,4 @@
+using Core.Models;
 using Infrastructure;
 using System.IO;
 
@@ -137,4 +138,61 @@ public partial class Form1 : Form
 
     #endregion
 
+    private void btnProcess_Click(object sender, EventArgs e)
+    {
+        SaveValues();
+        ProcessVideo();
+    }
+
+    public void SaveValues()
+    {
+        try
+        {
+            var editOptions = new VideoEditOptionsConfiguration(
+            inputPath: txtInput.Text,
+            outputPath: txtInput.Text + txtSufix.Text,
+            startMinutes: int.TryParse(txtStartMinutes.Text, out int startMinutesParsed) ? startMinutesParsed : 0,
+            startSeconds: int.TryParse(txtStartSeconds.Text, out int startSecondsParsed) ? startSecondsParsed : 0,
+            endMinutes: int.TryParse(txtEndMinutes.Text, out int endMinutesParsed) ? endMinutesParsed : 0,
+            endSeconds: int.TryParse(txtEndSeconds.Text, out int endSecondsParsed) ? endSecondsParsed : 0,
+            startTime: new TimeSpan(0, startMinutesParsed, startSecondsParsed),
+            endTime: new TimeSpan(0, endMinutesParsed, endSecondsParsed),
+            totalMilliseconds: endMinutesParsed*60*1000+endSecondsParsed*1000 - startMinutesParsed*60*1000 - startSecondsParsed*1000,
+            mirrorHorizontal: chkMirrorH.Checked,
+            mirrorVertical: chkMirrorV.Checked,
+            rotationAngle: float.TryParse(txtAngle.Text, out float angle) ? angle : 0f,
+            cropXStart: int.TryParse(txtInitialX.Text, out int cropXStartParsed) ? cropXStartParsed : (int?)null,
+            cropXEnd: int.TryParse(txtFinalX.Text, out int cropXEndParsed) ? cropXEndParsed : (int?)null,
+            cropYStart: int.TryParse(lblStartY.Text, out int cropYStartParsed) ? cropYStartParsed : (int?)null,
+            cropYEnd: int.TryParse(lblEndY.Text, out int cropYEndParsed) ? cropYEndParsed : (int?)null
+            );
+
+            MessageBox.Show("Values saved with success!");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error on saving values: " + ex.Message);
+        }
+    }
+
+    public void ProcessVideo()
+    {
+        if (EditOptions == null)
+        {
+            MessageBox.Show("Edit options not set. Please save values before processing.");
+            return;
+        }
+
+        try
+        {
+            // Aqui você chama seu serviço de processamento — exemplo fictício:
+            FfmpegService.ProcessVideo(EditOptions);
+
+            MessageBox.Show("Video processed successfully!");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error during video processing: " + ex.Message);
+        }
+    }
 }
