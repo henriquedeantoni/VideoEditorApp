@@ -14,6 +14,7 @@ public class VideoEditOptionsConfiguration
     private int _startSeconds;
     private int _endMinutes;
     private int _endSeconds;
+    private int _totalMiliseconds;
     private TimeSpan _startTime;
     private TimeSpan _endTime;
     private bool _mirrorHorizontal;
@@ -54,7 +55,11 @@ public class VideoEditOptionsConfiguration
         get { return _endSeconds; }
         set { _endSeconds = value; }
     }
-    
+    public int TotalMilliseconds
+    {
+        get { return _totalMiliseconds; }
+        set { _totalMiliseconds = value; }
+    }
 
     public TimeSpan StartTime 
     {
@@ -105,7 +110,24 @@ public class VideoEditOptionsConfiguration
         set {  _cropYEnd = value; } 
     }
 
-    public VideoEditOptionsConfiguration(string inputPath, string outputPath, int startMinutes, int startSeconds, int endMinutes, int endSeconds, TimeSpan startTime, TimeSpan endTime, bool mirrorHorizontal, bool mirrorVertical, float rotationAngle, int? cropXStart, int? cropXEnd, int? cropYStart, int? cropYEnd)
+    public VideoEditOptionsConfiguration(
+        string inputPath, 
+        string outputPath, 
+        int startMinutes, 
+        int startSeconds, 
+        int endMinutes, 
+        int endSeconds,
+        int totalMilliseconds,
+        TimeSpan startTime, 
+        TimeSpan endTime, 
+        bool mirrorHorizontal, 
+        bool mirrorVertical, 
+        float rotationAngle, 
+        int? cropXStart, 
+        int? cropXEnd, 
+        int? cropYStart, 
+        int? cropYEnd
+        )
     {
         InputPath = inputPath;
         OutputPath = outputPath;
@@ -113,6 +135,7 @@ public class VideoEditOptionsConfiguration
         StartSeconds = startSeconds;
         EndMinutes = endMinutes;
         EndSeconds = endSeconds;
+        TotalMilliseconds = totalMilliseconds;
         StartTime = MinutesSecondsToTimeSpan(startMinutes, startSeconds);
         EndTime = MinutesSecondsToTimeSpan(endMinutes, endSeconds); ;
         MirrorHorizontal = mirrorHorizontal;

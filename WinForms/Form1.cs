@@ -140,27 +140,30 @@ public partial class Form1 : Form
 
     private void btnProcess_Click(object sender, EventArgs e)
     {
+        SaveValues();
+    }
+
+    public void SaveValues()
+    {
         try
         {
-            //int totalMinutes = int.TryParse(txtMinutes.Text, out int mins) ? mins : 0;
-            //int remainingSeconds = int.TryParse(txtEndSeconds.Text, out int secs) ? secs : 0;
-
             var editOptions = new VideoEditOptionsConfiguration(
             inputPath: txtInput.Text,
             outputPath: txtInput.Text + txtSufix.Text,
-            startMinutes: 0,
-            startSeconds: 0,
-            endMinutes: totalMinutes,
-            endSeconds: remainingSeconds,
-            startTime: new TimeSpan(0, 0, 0),
-            endTime: new TimeSpan(0, totalMinutes, remainingSeconds),
+            startMinutes: int.TryParse(txtStartMinutes.Text, out int startMinutesParsed) ? startMinutesParsed : 0,
+            startSeconds: int.TryParse(txtStartSeconds.Text, out int startSecondsParsed) ? startSecondsParsed : 0,
+            endMinutes: int.TryParse(txtEndMinutes.Text, out int endMinutesParsed) ? endMinutesParsed : 0,
+            endSeconds: int.TryParse(txtEndSeconds.Text, out int endSecondsParsed) ? endSecondsParsed : 0,
+            startTime: new TimeSpan(0, startMinutesParsed, startMinutesParsed),
+            endTime: new TimeSpan(0, endMinutesParsed, endSecondsParsed),
+            totalMilliseconds: endMinutesParsed*60*1000+endSecondsParsed*1000 - startMinutesParsed*60*1000 - endSecondsParsed*1000,
             mirrorHorizontal: chkMirrorH.Checked,
             mirrorVertical: chkMirrorV.Checked,
             rotationAngle: float.TryParse(txtAngle.Text, out float angle) ? angle : 0f,
-            cropXStart: int.TryParse(txtInitialX.Text, out int cropXStart) ? cropXStart : (int?)null,
-            cropXEnd: int.TryParse(txtFinalX.Text, out int cropXEnd) ? cropXEnd : (int?)null,
-            cropYStart: int.TryParse(lblStartY.Text, out int cropYStart) ? cropYStart : (int?)null,
-            cropYEnd: int.TryParse(lblEndY.Text, out int cropYEnd) ? cropYEnd : (int?)null
+            cropXStart: int.TryParse(txtInitialX.Text, out int cropXStartParsed) ? cropXStartParsed : (int?)null,
+            cropXEnd: int.TryParse(txtFinalX.Text, out int cropXEndParsed) ? cropXEndParsed : (int?)null,
+            cropYStart: int.TryParse(lblStartY.Text, out int cropYStartParsed) ? cropYStartParsed : (int?)null,
+            cropYEnd: int.TryParse(lblEndY.Text, out int cropYEndParsed) ? cropYEndParsed : (int?)null
             );
 
             MessageBox.Show("Values saved with success!");

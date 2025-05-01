@@ -75,6 +75,9 @@
             groupBox1 = new GroupBox();
             chkOriginalAudio = new CheckBox();
             axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            lblTotalMsec = new Label();
+            gpbVideoInfo = new GroupBox();
+            lblTotalMillisec = new Label();
             gbxPath.SuspendLayout();
             gbxCutTime.SuspendLayout();
             gbxMirror.SuspendLayout();
@@ -82,6 +85,7 @@
             gbxCutScreen.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).BeginInit();
+            gpbVideoInfo.SuspendLayout();
             SuspendLayout();
             // 
             // txtInput
@@ -514,11 +518,41 @@
             axWindowsMediaPlayer1.Size = new Size(584, 456);
             axWindowsMediaPlayer1.TabIndex = 11;
             // 
+            // lblTotalMsec
+            // 
+            lblTotalMsec.AutoSize = true;
+            lblTotalMsec.Location = new Point(9, 29);
+            lblTotalMsec.Name = "lblTotalMsec";
+            lblTotalMsec.Size = new Size(110, 15);
+            lblTotalMsec.TabIndex = 12;
+            lblTotalMsec.Text = "Total Milliseconds:  ";
+            // 
+            // gpbVideoInfo
+            // 
+            gpbVideoInfo.Controls.Add(lblTotalMillisec);
+            gpbVideoInfo.Controls.Add(lblTotalMsec);
+            gpbVideoInfo.Location = new Point(20, 538);
+            gpbVideoInfo.Name = "gpbVideoInfo";
+            gpbVideoInfo.Size = new Size(264, 124);
+            gpbVideoInfo.TabIndex = 13;
+            gpbVideoInfo.TabStop = false;
+            gpbVideoInfo.Text = "Video Info";
+            // 
+            // lblTotalMillisec
+            // 
+            lblTotalMillisec.AutoSize = true;
+            lblTotalMillisec.Location = new Point(109, 29);
+            lblTotalMillisec.Name = "lblTotalMillisec";
+            lblTotalMillisec.Size = new Size(35, 15);
+            lblTotalMillisec.TabIndex = 13;
+            lblTotalMillisec.Text = "msec";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1038, 692);
+            Controls.Add(gpbVideoInfo);
             Controls.Add(axWindowsMediaPlayer1);
             Controls.Add(groupBox1);
             Controls.Add(btnProcess);
@@ -542,6 +576,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)axWindowsMediaPlayer1).EndInit();
+            gpbVideoInfo.ResumeLayout(false);
+            gpbVideoInfo.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -593,5 +629,8 @@
         private Label lblEndMinutes;
         private Label lblStartSeconds;
         private Label lblStartMinutes;
+        private Label lblTotalMsec;
+        private GroupBox gpbVideoInfo;
+        private Label lblTotalMillisec;
     }
 }
