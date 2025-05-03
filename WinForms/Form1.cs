@@ -11,6 +11,8 @@ public partial class Form1 : Form
     private int minMinutesLimit = 0;
     private int minSecondsLimit = 0;
 
+    private VideoEditOptionsConfiguration EditOptions;
+
     static string imagePathDestinity = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "closeIcon.png");
     static string imagePathSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "openIcon.png");
 
@@ -70,7 +72,9 @@ public partial class Form1 : Form
 
         try
         {
-            var (width, height) = FfmpegService.GetVideoDimensions(videoPath);
+            
+            var (width, height) = ffmpegService.GetVideoDimensions(videoPath);
+
 
             txtInitialX.Text = "0";
             txtFinalX.Text = width.ToString();
@@ -148,7 +152,7 @@ public partial class Form1 : Form
     {
         try
         {
-            var editOptions = new VideoEditOptionsConfiguration(
+            EditOptions = new VideoEditOptionsConfiguration(
             inputPath: txtInput.Text,
             outputPath: txtInput.Text + txtSufix.Text,
             startMinutes: int.TryParse(txtStartMinutes.Text, out int startMinutesParsed) ? startMinutesParsed : 0,
@@ -186,7 +190,8 @@ public partial class Form1 : Form
         try
         {
             // Aqui você chama seu serviço de processamento — exemplo fictício:
-            FfmpegService.ProcessVideo(EditOptions);
+            var ffmpegService = new FfmpegService();
+            ffmpegService.ProcessVideo(EditOptions);
 
             MessageBox.Show("Video processed successfully!");
         }
