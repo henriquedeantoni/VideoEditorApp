@@ -273,6 +273,7 @@
             vScrollBarStartSec.Name = "vScrollBarStartSec";
             vScrollBarStartSec.Size = new Size(34, 31);
             vScrollBarStartSec.TabIndex = 16;
+            vScrollBarStartSec.Scroll += vScrollBarStartSec_Scroll;
             // 
             // txtStartSeconds
             // 

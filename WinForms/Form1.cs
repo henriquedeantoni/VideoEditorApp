@@ -6,10 +6,12 @@ namespace WinForms;
 
 public partial class Form1 : Form
 {
-    private int maxMinutesLimit;
-    private int maxSecondsLimit;
     private int minMinutesLimit = 0;
     private int minSecondsLimit = 0;
+    private int maxMinutesLimit;
+    private int maxSecondsLimit;
+
+    private VideoEditOptionsConfiguration EditOptions;
 
     static string imagePathDestinity = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "closeIcon.png");
     static string imagePathSource = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Assets", "openIcon.png");
@@ -37,10 +39,14 @@ public partial class Form1 : Form
 
         txtAngle.Text = hScrollBarAngle.Value.ToString();
 
-        // Evento de mudança da ScrollBar
+        // change event on ScrollBars
         hScrollBarAngle.Scroll += hScrollBarAngle_Scroll;
+        vScrollBarStartMin.Scroll += vScrollBarStartMin_Scroll;
+        vScrollBarStartSec.Scroll += vScrollBarStartSec_Scroll;
+        vScrollBarEndMin.Scroll += vScrollBarStartMin_Scroll;
+        vScrollBarEndSec.Scroll += vScrollBarStartSec_Scroll;
 
-        // Evento de mudança no TextBox
+        // change event on TextBoxes
         txtAngle.TextChanged += txtAngle_TextChanged;
     }
 
@@ -61,7 +67,13 @@ public partial class Form1 : Form
 
                 txtEndMinutes.Text = totalMinutes.ToString();
                 txtEndSeconds.Text = remainingSeconds.ToString();
-            }
+
+                minMinutesLimit = int.Parse(txtStartMinutes.Text);
+                minSecondsLimit = int.Parse(txtStartMinutes.Text);
+                maxMinutesLimit = int.Parse(txtEndMinutes.Text);
+                maxSecondsLimit = int.Parse(txtEndSeconds.Text);
+
+}
         }
         catch (Exception ex)
         {
@@ -70,7 +82,9 @@ public partial class Form1 : Form
 
         try
         {
-            var (width, height) = FfmpegService.GetVideoDimensions(videoPath);
+
+            var (width, height) = ffmpegService.GetVideoDimensions(videoPath);
+
 
             txtInitialX.Text = "0";
             txtFinalX.Text = width.ToString();
@@ -135,6 +149,22 @@ public partial class Form1 : Form
     {
         txtAngle.Text = hScrollBarAngle.Value.ToString();
     }
+    private void vScrollBarStartMin_Scroll(object sender, ScrollEventArgs e)
+    {
+        txtStartMinutes.Text = vScrollBarStartMin.Value.ToString();
+    }
+    private void vScrollBarStartSec_Scroll(object sender, ScrollEventArgs e)
+    {
+        txtStartSeconds.Text = vScrollBarStartSec.Value.ToString();
+    }
+    private void vScrollBarEndMin_Scroll(object sender, ScrollEventArgs e)
+    {
+        txtEndMinutes.Text = vScrollBarEndMin.Value.ToString();
+    }
+    private void vScrollBarEndSec_Scroll(object sender, ScrollEventArgs e)
+    {
+        txtEndSeconds.Text = vScrollBarEndSec.Value.ToString();
+    }
 
     #endregion
 
@@ -148,7 +178,7 @@ public partial class Form1 : Form
     {
         try
         {
-            var editOptions = new VideoEditOptionsConfiguration(
+            EditOptions = new VideoEditOptionsConfiguration(
             inputPath: txtInput.Text,
             outputPath: txtInput.Text + txtSufix.Text,
             startMinutes: int.TryParse(txtStartMinutes.Text, out int startMinutesParsed) ? startMinutesParsed : 0,
@@ -157,7 +187,7 @@ public partial class Form1 : Form
             endSeconds: int.TryParse(txtEndSeconds.Text, out int endSecondsParsed) ? endSecondsParsed : 0,
             startTime: new TimeSpan(0, startMinutesParsed, startSecondsParsed),
             endTime: new TimeSpan(0, endMinutesParsed, endSecondsParsed),
-            totalMilliseconds: endMinutesParsed*60*1000+endSecondsParsed*1000 - startMinutesParsed*60*1000 - startSecondsParsed*1000,
+            totalMilliseconds: endMinutesParsed * 60 * 1000 + endSecondsParsed * 1000 - startMinutesParsed * 60 * 1000 - startSecondsParsed * 1000,
             mirrorHorizontal: chkMirrorH.Checked,
             mirrorVertical: chkMirrorV.Checked,
             rotationAngle: float.TryParse(txtAngle.Text, out float angle) ? angle : 0f,
@@ -185,8 +215,8 @@ public partial class Form1 : Form
 
         try
         {
-            // Aqui você chama seu serviço de processamento — exemplo fictício:
-            FfmpegService.ProcessVideo(EditOptions);
+            var ffmpegService = new FfmpegService();
+            ffmpegService.ProcessVideo(EditOptions);
 
             MessageBox.Show("Video processed successfully!");
         }
@@ -195,4 +225,6 @@ public partial class Form1 : Form
             MessageBox.Show("Error during video processing: " + ex.Message);
         }
     }
+
+
 }
