@@ -38,6 +38,10 @@ public partial class Form1 : Form
         txtEndSeconds.Text = "0";
 
         txtAngle.Text = hScrollBarAngle.Value.ToString();
+        txtStartMinutes.Text = vScrollBarStartMin.Value.ToString();
+        txtStartSeconds.Text = vScrollBarStartSec.Value.ToString();
+        txtEndMinutes.Text = vScrollBarEndMin.Value.ToString();
+        txtEndSeconds.Text = vScrollBarEndSec.Value.ToString();
 
         // change event on ScrollBars
         hScrollBarAngle.Scroll += hScrollBarAngle_Scroll;
@@ -48,7 +52,12 @@ public partial class Form1 : Form
 
         // change event on TextBoxes
         txtAngle.TextChanged += txtAngle_TextChanged;
+        txtStartMinutes.TextChanged += txtStartMinutes_TextChanged;
+        txtStartSeconds.TextChanged += txtStartSeconds_TextChanged;
+        txtEndMinutes.TextChanged += txtEndMinutes_TextChanged;
+        txtEndSeconds.TextChanged += txtEndSeconds_TextChanged;
     }
+
 
     public void LoadVideoValues(string videoPath)
     {
@@ -73,7 +82,7 @@ public partial class Form1 : Form
                 maxMinutesLimit = int.Parse(txtEndMinutes.Text);
                 maxSecondsLimit = int.Parse(txtEndSeconds.Text);
 
-}
+            }
         }
         catch (Exception ex)
         {
@@ -144,6 +153,51 @@ public partial class Form1 : Form
             }
         }
     }
+    private void txtStartMinutes_TextChanged(object sender, EventArgs e)
+    {
+        if(int.TryParse(txtStartMinutes.Text, out int startMinutes))
+        {
+            if(startMinutes >= minMinutesLimit && startMinutes <= maxMinutesLimit-1)
+            {
+                vScrollBarStartMin.Value = startMinutes;
+            }
+        }
+    }
+
+    private void txtStartSeconds_TextChanged(object sender, EventArgs e)
+    {
+        if(int.TryParse(txtStartSeconds.Text, out int startSeconds))
+        {
+            if(startSeconds >= minSecondsLimit && startSeconds <= maxSecondsLimit-1)
+            {
+                vScrollBarStartSec.Value = startSeconds;
+            }
+        }
+    }
+
+    private void txtEndMinutes_TextChanged(object sender, EventArgs e)
+    {
+        if(int.TryParse(txtEndMinutes.Text, out int endMinutes))
+        {
+            if(endMinutes >= minMinutesLimit+1 && endMinutes <= maxMinutesLimit)
+            {
+                vScrollBarEndMin.Value = endMinutes;
+            }
+        }
+    }
+
+    private void txtEndSeconds_TextChanged(object sender, EventArgs e)
+    {
+        if(int.TryParse(txtEndSeconds.Text, out int endSeconds))
+        {
+            if(endSeconds >= minSecondsLimit+1 && endSeconds <= maxSecondsLimit)
+            {
+                vScrollBarEndSec.Value = endSeconds;
+            }
+        }
+    }
+
+
 
     private void hScrollBarAngle_Scroll(object sender, ScrollEventArgs e)
     {
