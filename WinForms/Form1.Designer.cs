@@ -108,6 +108,7 @@
             txtStartMinutes.Name = "txtStartMinutes";
             txtStartMinutes.Size = new Size(34, 23);
             txtStartMinutes.TabIndex = 2;
+            txtStartMinutes.TextChanged += txtStartMinutes_TextChanged;
             // 
             // gbxPath
             // 
@@ -245,6 +246,7 @@
             vScrollBarEndSec.Name = "vScrollBarEndSec";
             vScrollBarEndSec.Size = new Size(34, 31);
             vScrollBarEndSec.TabIndex = 20;
+            vScrollBarEndSec.Scroll += vScrollBarEndSec_Scroll;
             // 
             // txtEndSeconds
             // 
@@ -252,6 +254,7 @@
             txtEndSeconds.Name = "txtEndSeconds";
             txtEndSeconds.Size = new Size(34, 23);
             txtEndSeconds.TabIndex = 19;
+            txtEndSeconds.TextChanged += txtEndSeconds_TextChanged;
             // 
             // vScrollBarEndMin
             // 
@@ -259,6 +262,7 @@
             vScrollBarEndMin.Name = "vScrollBarEndMin";
             vScrollBarEndMin.Size = new Size(34, 31);
             vScrollBarEndMin.TabIndex = 18;
+            vScrollBarEndMin.Scroll += vScrollBarEndMin_Scroll;
             // 
             // txtEndMinutes
             // 
@@ -266,6 +270,7 @@
             txtEndMinutes.Name = "txtEndMinutes";
             txtEndMinutes.Size = new Size(34, 23);
             txtEndMinutes.TabIndex = 17;
+            txtEndMinutes.TextChanged += txtEndMinutes_TextChanged;
             // 
             // vScrollBarStartSec
             // 
@@ -281,6 +286,7 @@
             txtStartSeconds.Name = "txtStartSeconds";
             txtStartSeconds.Size = new Size(34, 23);
             txtStartSeconds.TabIndex = 15;
+            txtStartSeconds.TextChanged += txtStartSeconds_TextChanged;
             // 
             // vScrollBarStartMin
             // 
@@ -288,6 +294,7 @@
             vScrollBarStartMin.Name = "vScrollBarStartMin";
             vScrollBarStartMin.Size = new Size(34, 31);
             vScrollBarStartMin.TabIndex = 14;
+            vScrollBarStartMin.Scroll += vScrollBarStartMin_Scroll;
             // 
             // lblEndTime
             // 
