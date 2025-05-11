@@ -47,8 +47,8 @@ public partial class Form1 : Form
         hScrollBarAngle.Scroll += hScrollBarAngle_Scroll;
         vScrollBarStartMin.Scroll += vScrollBarStartMin_Scroll;
         vScrollBarStartSec.Scroll += vScrollBarStartSec_Scroll;
-        vScrollBarEndMin.Scroll += vScrollBarStartMin_Scroll;
-        vScrollBarEndSec.Scroll += vScrollBarStartSec_Scroll;
+        vScrollBarEndMin.Scroll += vScrollBarEndMin_Scroll;
+        vScrollBarEndSec.Scroll += vScrollBarEndSec_Scroll;
 
         // change event on TextBoxes
         txtAngle.TextChanged += txtAngle_TextChanged;
@@ -69,7 +69,7 @@ public partial class Form1 : Form
             if (duration.HasValue)
             {
                 int totalMinutes = (int)duration.Value.TotalMinutes;
-                int remainingSeconds = duration.Value.Seconds;
+                int remainingSeconds = (int)duration.Value.TotalSeconds-(int)totalMinutes*60;
 
                 txtStartMinutes.Text = "0";
                 txtStartSeconds.Text = "0";
@@ -77,10 +77,19 @@ public partial class Form1 : Form
                 txtEndMinutes.Text = totalMinutes.ToString();
                 txtEndSeconds.Text = remainingSeconds.ToString();
 
-                minMinutesLimit = int.Parse(txtStartMinutes.Text);
-                minSecondsLimit = int.Parse(txtStartMinutes.Text);
-                maxMinutesLimit = int.Parse(txtEndMinutes.Text);
-                maxSecondsLimit = int.Parse(txtEndSeconds.Text);
+                vScrollBarStartMin.Minimum = 0;
+                vScrollBarStartMin.Maximum = totalMinutes - 1;
+                vScrollBarStartSec.Minimum = 0;
+                vScrollBarStartSec.Maximum = 59;
+                vScrollBarEndMin.Minimum = 0;
+                vScrollBarEndMin.Maximum = totalMinutes;
+                vScrollBarEndSec.Minimum = 0;
+                vScrollBarEndSec.Maximum = 60;
+
+                //minMinutesLimit = int.Parse(txtStartMinutes.Text);
+                //minSecondsLimit = int.Parse(txtStartMinutes.Text);
+                //maxMinutesLimit = int.Parse(txtEndMinutes.Text);
+                //maxSecondsLimit = int.Parse(txtEndSeconds.Text);
 
             }
         }
@@ -97,8 +106,8 @@ public partial class Form1 : Form
 
             txtInitialX.Text = "0";
             txtFinalX.Text = width.ToString();
-            lblStartY.Text = "0";
-            lblEndY.Text = height.ToString();
+            txtInitialY.Text = "0";
+            txtFinalY.Text = height.ToString();
         }
         catch (Exception ex)
         {
@@ -157,7 +166,7 @@ public partial class Form1 : Form
     {
         if(int.TryParse(txtStartMinutes.Text, out int startMinutes))
         {
-            if(startMinutes >= minMinutesLimit && startMinutes <= maxMinutesLimit-1)
+            if(startMinutes >= vScrollBarStartMin.Minimum && startMinutes <= vScrollBarStartMin.Maximum)
             {
                 vScrollBarStartMin.Value = startMinutes;
             }
@@ -168,7 +177,7 @@ public partial class Form1 : Form
     {
         if(int.TryParse(txtStartSeconds.Text, out int startSeconds))
         {
-            if(startSeconds >= minSecondsLimit && startSeconds <= maxSecondsLimit-1)
+            if(startSeconds >= vScrollBarStartSec.Minimum && startSeconds <= vScrollBarStartSec.Maximum)
             {
                 vScrollBarStartSec.Value = startSeconds;
             }
@@ -179,7 +188,7 @@ public partial class Form1 : Form
     {
         if(int.TryParse(txtEndMinutes.Text, out int endMinutes))
         {
-            if(endMinutes >= minMinutesLimit+1 && endMinutes <= maxMinutesLimit)
+            if(endMinutes >= vScrollBarEndMin.Minimum && endMinutes <= vScrollBarEndMin.Maximum)
             {
                 vScrollBarEndMin.Value = endMinutes;
             }
@@ -190,7 +199,7 @@ public partial class Form1 : Form
     {
         if(int.TryParse(txtEndSeconds.Text, out int endSeconds))
         {
-            if(endSeconds >= minSecondsLimit+1 && endSeconds <= maxSecondsLimit)
+            if(endSeconds >= vScrollBarEndSec.Minimum && endSeconds <= vScrollBarEndSec.Maximum)
             {
                 vScrollBarEndSec.Value = endSeconds;
             }
